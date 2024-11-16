@@ -49,8 +49,15 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.serviceType_dropdown = new System.Windows.Forms.ComboBox();
             this.reportServiceType_lbl = new System.Windows.Forms.Label();
+            this.serviceType_dropdown = new System.Windows.Forms.ComboBox();
+            this.reportName_lbl = new System.Windows.Forms.Label();
+            this.reportEmail_lbl = new System.Windows.Forms.Label();
+            this.reportNumber_lbl = new System.Windows.Forms.Label();
+            this.reportName_txtbx = new System.Windows.Forms.TextBox();
+            this.reportEmail_txtbx = new System.Windows.Forms.TextBox();
+            this.reportNumber_txtbx = new System.Windows.Forms.TextBox();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +76,7 @@
             // 
             // location_txtbx
             // 
-            this.location_txtbx.Location = new System.Drawing.Point(210, 84);
+            this.location_txtbx.Location = new System.Drawing.Point(221, 219);
             this.location_txtbx.Name = "location_txtbx";
             this.location_txtbx.Size = new System.Drawing.Size(100, 20);
             this.location_txtbx.TabIndex = 1;
@@ -77,7 +84,7 @@
             // 
             // discription_txtbx
             // 
-            this.discription_txtbx.Location = new System.Drawing.Point(210, 110);
+            this.discription_txtbx.Location = new System.Drawing.Point(221, 245);
             this.discription_txtbx.Name = "discription_txtbx";
             this.discription_txtbx.Size = new System.Drawing.Size(153, 20);
             this.discription_txtbx.TabIndex = 2;
@@ -104,7 +111,7 @@
             this.attach_lbl.AutoSize = true;
             this.attach_lbl.BackColor = System.Drawing.Color.Transparent;
             this.attach_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attach_lbl.Location = new System.Drawing.Point(41, 330);
+            this.attach_lbl.Location = new System.Drawing.Point(52, 465);
             this.attach_lbl.Name = "attach_lbl";
             this.attach_lbl.Size = new System.Drawing.Size(203, 20);
             this.attach_lbl.TabIndex = 5;
@@ -115,7 +122,7 @@
             this.location_lbl.AutoSize = true;
             this.location_lbl.BackColor = System.Drawing.Color.Gray;
             this.location_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location_lbl.Location = new System.Drawing.Point(42, 87);
+            this.location_lbl.Location = new System.Drawing.Point(53, 222);
             this.location_lbl.Name = "location_lbl";
             this.location_lbl.Size = new System.Drawing.Size(71, 20);
             this.location_lbl.TabIndex = 6;
@@ -126,7 +133,7 @@
             this.description_lbl.AutoSize = true;
             this.description_lbl.BackColor = System.Drawing.Color.Gray;
             this.description_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.description_lbl.Location = new System.Drawing.Point(41, 110);
+            this.description_lbl.Location = new System.Drawing.Point(52, 245);
             this.description_lbl.Name = "description_lbl";
             this.description_lbl.Size = new System.Drawing.Size(128, 20);
             this.description_lbl.TabIndex = 7;
@@ -137,7 +144,7 @@
             this.category_lbl.AutoSize = true;
             this.category_lbl.BackColor = System.Drawing.Color.Gray;
             this.category_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.category_lbl.Location = new System.Drawing.Point(41, 173);
+            this.category_lbl.Location = new System.Drawing.Point(52, 308);
             this.category_lbl.Name = "category_lbl";
             this.category_lbl.Size = new System.Drawing.Size(130, 20);
             this.category_lbl.TabIndex = 8;
@@ -155,7 +162,7 @@
             "Sanitation",
             "Roads",
             "Utilities"});
-            this.category_listBox.Location = new System.Drawing.Point(210, 173);
+            this.category_listBox.Location = new System.Drawing.Point(221, 308);
             this.category_listBox.Name = "category_listBox";
             this.category_listBox.ScrollAlwaysVisible = true;
             this.category_listBox.Size = new System.Drawing.Size(120, 84);
@@ -165,7 +172,7 @@
             // attach_btn
             // 
             this.attach_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attach_btn.Location = new System.Drawing.Point(41, 353);
+            this.attach_btn.Location = new System.Drawing.Point(52, 488);
             this.attach_btn.Name = "attach_btn";
             this.attach_btn.Size = new System.Drawing.Size(111, 36);
             this.attach_btn.TabIndex = 10;
@@ -177,7 +184,7 @@
             // 
             this.no_btn.AutoSize = true;
             this.no_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.no_btn.Location = new System.Drawing.Point(196, 359);
+            this.no_btn.Location = new System.Drawing.Point(207, 494);
             this.no_btn.Name = "no_btn";
             this.no_btn.Size = new System.Drawing.Size(48, 24);
             this.no_btn.TabIndex = 11;
@@ -240,6 +247,12 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.reportNumber_txtbx);
+            this.panel2.Controls.Add(this.reportEmail_txtbx);
+            this.panel2.Controls.Add(this.reportName_txtbx);
+            this.panel2.Controls.Add(this.reportNumber_lbl);
+            this.panel2.Controls.Add(this.reportEmail_lbl);
+            this.panel2.Controls.Add(this.reportName_lbl);
             this.panel2.Controls.Add(this.reportServiceType_lbl);
             this.panel2.Controls.Add(this.serviceType_dropdown);
             this.panel2.Controls.Add(this.requestService_btn);
@@ -259,6 +272,15 @@
             this.panel2.Size = new System.Drawing.Size(899, 591);
             this.panel2.TabIndex = 16;
             // 
+            // reportServiceType_lbl
+            // 
+            this.reportServiceType_lbl.AutoSize = true;
+            this.reportServiceType_lbl.Location = new System.Drawing.Point(613, 123);
+            this.reportServiceType_lbl.Name = "reportServiceType_lbl";
+            this.reportServiceType_lbl.Size = new System.Drawing.Size(73, 13);
+            this.reportServiceType_lbl.TabIndex = 14;
+            this.reportServiceType_lbl.Text = "Service Type:";
+            // 
             // serviceType_dropdown
             // 
             this.serviceType_dropdown.FormattingEnabled = true;
@@ -268,14 +290,57 @@
             this.serviceType_dropdown.TabIndex = 13;
             this.serviceType_dropdown.SelectedIndexChanged += new System.EventHandler(this.serviceType_dropdown_SelectedIndexChanged_1);
             // 
-            // reportServiceType_lbl
+            // reportName_lbl
             // 
-            this.reportServiceType_lbl.AutoSize = true;
-            this.reportServiceType_lbl.Location = new System.Drawing.Point(613, 123);
-            this.reportServiceType_lbl.Name = "reportServiceType_lbl";
-            this.reportServiceType_lbl.Size = new System.Drawing.Size(73, 13);
-            this.reportServiceType_lbl.TabIndex = 14;
-            this.reportServiceType_lbl.Text = "Service Type:";
+            this.reportName_lbl.AutoSize = true;
+            this.reportName_lbl.Location = new System.Drawing.Point(37, 82);
+            this.reportName_lbl.Name = "reportName_lbl";
+            this.reportName_lbl.Size = new System.Drawing.Size(38, 13);
+            this.reportName_lbl.TabIndex = 15;
+            this.reportName_lbl.Text = "Name:";
+            // 
+            // reportEmail_lbl
+            // 
+            this.reportEmail_lbl.AutoSize = true;
+            this.reportEmail_lbl.Location = new System.Drawing.Point(37, 108);
+            this.reportEmail_lbl.Name = "reportEmail_lbl";
+            this.reportEmail_lbl.Size = new System.Drawing.Size(35, 13);
+            this.reportEmail_lbl.TabIndex = 16;
+            this.reportEmail_lbl.Text = "Email:";
+            // 
+            // reportNumber_lbl
+            // 
+            this.reportNumber_lbl.AutoSize = true;
+            this.reportNumber_lbl.Location = new System.Drawing.Point(37, 137);
+            this.reportNumber_lbl.Name = "reportNumber_lbl";
+            this.reportNumber_lbl.Size = new System.Drawing.Size(78, 13);
+            this.reportNumber_lbl.TabIndex = 17;
+            this.reportNumber_lbl.Text = "Phone Number";
+            // 
+            // reportName_txtbx
+            // 
+            this.reportName_txtbx.Location = new System.Drawing.Point(221, 82);
+            this.reportName_txtbx.Name = "reportName_txtbx";
+            this.reportName_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportName_txtbx.TabIndex = 18;
+            this.reportName_txtbx.Text = "Full Name";
+            this.reportName_txtbx.TextChanged += new System.EventHandler(this.reportName_txtbx_TextChanged);
+            // 
+            // reportEmail_txtbx
+            // 
+            this.reportEmail_txtbx.Location = new System.Drawing.Point(221, 109);
+            this.reportEmail_txtbx.Name = "reportEmail_txtbx";
+            this.reportEmail_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportEmail_txtbx.TabIndex = 19;
+            this.reportEmail_txtbx.TextChanged += new System.EventHandler(this.reportEmail_txtbx_TextChanged);
+            // 
+            // reportNumber_txtbx
+            // 
+            this.reportNumber_txtbx.Location = new System.Drawing.Point(221, 137);
+            this.reportNumber_txtbx.Name = "reportNumber_txtbx";
+            this.reportNumber_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportNumber_txtbx.TabIndex = 20;
+            this.reportNumber_txtbx.TextChanged += new System.EventHandler(this.reportNumber_txtbx_TextChanged);
             // 
             // ReportIssuesForm
             // 
@@ -322,5 +387,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox serviceType_dropdown;
         private System.Windows.Forms.Label reportServiceType_lbl;
+        private System.Windows.Forms.TextBox reportNumber_txtbx;
+        private System.Windows.Forms.TextBox reportEmail_txtbx;
+        private System.Windows.Forms.TextBox reportName_txtbx;
+        private System.Windows.Forms.Label reportNumber_lbl;
+        private System.Windows.Forms.Label reportEmail_lbl;
+        private System.Windows.Forms.Label reportName_lbl;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

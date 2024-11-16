@@ -45,8 +45,7 @@ namespace MunicipalityApp
 
         private void option3btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not available");
-            // option to be implemented at a later stage 
+            formController.showStatusForm(); // Method in FormController to show service request status   
 
         }
 

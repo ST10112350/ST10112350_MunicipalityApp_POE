@@ -121,6 +121,7 @@
             this.requestSubmit_btn.TabIndex = 7;
             this.requestSubmit_btn.Text = "Submit!";
             this.requestSubmit_btn.UseVisualStyleBackColor = true;
+            this.requestSubmit_btn.Click += new System.EventHandler(this.requestSubmit_btn_Click);
             // 
             // requestName_txtbox
             // 
@@ -129,6 +130,7 @@
             this.requestName_txtbox.Size = new System.Drawing.Size(100, 20);
             this.requestName_txtbox.TabIndex = 9;
             this.requestName_txtbox.Text = "Full Name";
+            this.requestName_txtbox.TextChanged += new System.EventHandler(this.requestName_txtbox_TextChanged);
             // 
             // requestEmail_txtbox
             // 
@@ -136,6 +138,7 @@
             this.requestEmail_txtbox.Name = "requestEmail_txtbox";
             this.requestEmail_txtbox.Size = new System.Drawing.Size(100, 20);
             this.requestEmail_txtbox.TabIndex = 10;
+            this.requestEmail_txtbox.TextChanged += new System.EventHandler(this.requestEmail_txtbox_TextChanged);
             // 
             // requestNumber_txtbox
             // 
@@ -143,6 +146,7 @@
             this.requestNumber_txtbox.Name = "requestNumber_txtbox";
             this.requestNumber_txtbox.Size = new System.Drawing.Size(100, 20);
             this.requestNumber_txtbox.TabIndex = 11;
+            this.requestNumber_txtbox.TextChanged += new System.EventHandler(this.requestNumber_txtbox_TextChanged);
             // 
             // label4
             // 
@@ -160,6 +164,7 @@
             this.requestStype_dropdown.Name = "requestStype_dropdown";
             this.requestStype_dropdown.Size = new System.Drawing.Size(121, 21);
             this.requestStype_dropdown.TabIndex = 13;
+            this.requestStype_dropdown.SelectedIndexChanged += new System.EventHandler(this.requestStype_dropdown_SelectedIndexChanged);
             // 
             // RequestServiceForm
             // 

@@ -17,8 +17,10 @@ namespace MunicipalityApp
         private string location = string.Empty;
         private string category = string.Empty;
         private string description = string.Empty;
-        //private bool requestService = false; 
         private string serviceType = string.Empty;
+        private string userName = string.Empty; 
+        private string userEmail = string.Empty; 
+        private string userPhone = string.Empty;
         private IssueManager issueManager;
 
         public ReportIssuesForm(IssueManager manager)
@@ -26,11 +28,37 @@ namespace MunicipalityApp
             InitializeComponent();
             issueManager = manager; // Initialize IssueManager
             serviceType_dropdown.Visible = false; // Initially hide the dropdown
+            PopulateServiceTypeDropdown();
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void ReportIssuesForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// User input for the report
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void reportName_txtbx_TextChanged(object sender, EventArgs e)
+        {
+            userName = reportName_txtbx.Text;
+        }
+
+        private void reportEmail_txtbx_TextChanged(object sender, EventArgs e)
+        {
+            userEmail = reportEmail_txtbx.Text;
+        }
+
+        private void reportNumber_txtbx_TextChanged(object sender, EventArgs e)
+        {
+            userPhone = reportNumber_txtbx.Text;
         }
 
         private void location_txtbx_TextChanged(object sender, EventArgs e)
@@ -47,6 +75,12 @@ namespace MunicipalityApp
         {
             description = discription_txtbx.Text; 
         }
+
+        /// <summary>
+        /// Request service button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void requestService_btn_Click_1(object sender, EventArgs e)
         {
             serviceType_dropdown.Visible = true; // Show the dropdown when button is clicked
@@ -64,8 +98,27 @@ namespace MunicipalityApp
                 issueManager.AddServiceRequest(newRequest);
             }
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
+        /// <summary>
+        /// Populate the service type dropdown
+        /// </summary>
+        private void PopulateServiceTypeDropdown() 
+        { 
+            serviceType_dropdown.Items.AddRange(new string[] 
+            { 
+                "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Ste Disposal", 
+                "Water Leak Reporting", "Sewage Issues", "Public Health Inspections", "Animal Control", "Park Maintenance", 
+                "Facility Booking", "Playground Repairs", "Community Safety", "Littering Reporting", "Tree Maintenance" 
+            }); 
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Submit the issue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submit_btn_Click(object sender, EventArgs e)
         {
             // Create a new IssueClass instance with collected data
@@ -77,9 +130,54 @@ namespace MunicipalityApp
             // success message and reset the form
             MessageBox.Show("Issue reported successfully!");
 
-            // Optional: Reset the form fields
+            //Reset the form fields
             ResetForm();
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Validation for textboxes and dropdown
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateFields()
+        {
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            bool isValid = true;
+            string errorMessage = "";
+
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                errorMessage += "Name is required.\n";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(userEmail) || !System.Text.RegularExpressions.Regex.IsMatch(userEmail, emailPattern))
+            {
+                errorMessage += "A valid email is required.\n";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(userPhone) || userPhone.Length != 10)
+            {
+                errorMessage += "Phone number must be 10 digits.\n";
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(serviceType))
+            {
+                errorMessage += "Please select a service type.\n";
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return isValid;
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// attaching a file 
@@ -103,11 +201,13 @@ namespace MunicipalityApp
                 }
             }
         }
-
+       
         public string GetAttachedFilePath()
         {
             return attachedFilePath;
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void ResetForm()
         {
@@ -118,22 +218,8 @@ namespace MunicipalityApp
             //lblSelectedFile.Text = string.Empty; // Assuming you have a label named lblSelectedFile
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Close the current form
-            this.Close();
 
-            // Create and show the Main Menu form
-            MenuForm1 mainMenuForm = new MenuForm1();
-            mainMenuForm.Show();
-        }
-
-        private void ReportIssuesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
+       
     }
 }
 //---------------------------------------------------------END-----------------------------------------------------------------//

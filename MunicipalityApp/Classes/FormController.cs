@@ -11,6 +11,7 @@ namespace MunicipalityApp.Classes
     public class FormController
     {
         private IssueManager issueManager = new IssueManager();
+        private ServiceRequestManager serviceRequestManager = new ServiceRequestManager();
         private SortedDictionary<DateTime, List<AnnouncementClass>> announcements = new SortedDictionary<DateTime, List<AnnouncementClass>>();
 
         // Show the Report Issues Form
@@ -34,6 +35,13 @@ namespace MunicipalityApp.Classes
             MenuForm1 menuForm = new MenuForm1();
             menuForm.Show();
         }
+
+        public void showStatusForm()
+        {
+            ServiceRequestStatusForm statusForm = new ServiceRequestStatusForm(serviceRequestManager);
+            statusForm.Show();
+        }   
+
     }
 }
 

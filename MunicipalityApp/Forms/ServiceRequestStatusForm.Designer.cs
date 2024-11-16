@@ -33,6 +33,7 @@
             this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceRequests_Results = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,11 +78,21 @@
             this.contact_news_menu.Size = new System.Drawing.Size(85, 24);
             this.contact_news_menu.Text = "Contact Us";
             // 
+            // serviceRequests_Results
+            // 
+            this.serviceRequests_Results.FormattingEnabled = true;
+            this.serviceRequests_Results.Location = new System.Drawing.Point(103, 165);
+            this.serviceRequests_Results.Name = "serviceRequests_Results";
+            this.serviceRequests_Results.Size = new System.Drawing.Size(198, 173);
+            this.serviceRequests_Results.TabIndex = 2;
+            this.serviceRequests_Results.SelectedIndexChanged += new System.EventHandler(this.serviceRequests_Results_SelectedIndexChanged);
+            // 
             // ServiceRequestStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.serviceRequests_Results);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ServiceRequestStatusForm";
             this.Text = "ServiceRequestStatusForm";
@@ -99,5 +110,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem contact_news_menu;
+        private System.Windows.Forms.ListBox serviceRequests_Results;
     }
 }
