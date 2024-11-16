@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MunicipalityApp.Classes;
+using MunicipalityApp.Trees;
 
 namespace MunicipalityApp
 {
@@ -22,13 +23,15 @@ namespace MunicipalityApp
         private string userEmail = string.Empty; 
         private string userPhone = string.Empty;
         private IssueManager issueManager;
+        private ServiceRequestManager serviceRequestManager;
 
-        public ReportIssuesForm(IssueManager manager)
+        public ReportIssuesForm(IssueManager manager, ServiceRequestManager requestManager)
         {
             InitializeComponent();
             issueManager = manager; // Initialize IssueManager
             serviceType_dropdown.Visible = false; // Initially hide the dropdown
             PopulateServiceTypeDropdown();
+            serviceRequestManager = requestManager;
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -90,12 +93,11 @@ namespace MunicipalityApp
         {
             serviceType = serviceType_dropdown.SelectedItem?.ToString();
 
-            string serviceType = serviceType_dropdown.SelectedItem?.ToString();
             if (!string.IsNullOrEmpty(serviceType))
             {
                 // Create and add the service request
-                ServiceRequest newRequest = new ServiceRequest(-1, $"Request for {serviceType}", "Pending");
-                issueManager.AddServiceRequest(newRequest);
+                ServiceRequest newRequest = new ServiceRequest(-1, "Pending", userName, userEmail, userPhone, serviceType); 
+                serviceRequestManager.AddServiceRequest(newRequest);
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

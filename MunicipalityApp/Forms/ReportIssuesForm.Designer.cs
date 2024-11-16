@@ -49,14 +49,14 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.reportNumber_txtbx = new System.Windows.Forms.TextBox();
+            this.reportEmail_txtbx = new System.Windows.Forms.TextBox();
+            this.reportName_txtbx = new System.Windows.Forms.TextBox();
+            this.reportNumber_lbl = new System.Windows.Forms.Label();
+            this.reportEmail_lbl = new System.Windows.Forms.Label();
+            this.reportName_lbl = new System.Windows.Forms.Label();
             this.reportServiceType_lbl = new System.Windows.Forms.Label();
             this.serviceType_dropdown = new System.Windows.Forms.ComboBox();
-            this.reportName_lbl = new System.Windows.Forms.Label();
-            this.reportEmail_lbl = new System.Windows.Forms.Label();
-            this.reportNumber_lbl = new System.Windows.Forms.Label();
-            this.reportName_txtbx = new System.Windows.Forms.TextBox();
-            this.reportEmail_txtbx = new System.Windows.Forms.TextBox();
-            this.reportNumber_txtbx = new System.Windows.Forms.TextBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -272,6 +272,58 @@
             this.panel2.Size = new System.Drawing.Size(899, 591);
             this.panel2.TabIndex = 16;
             // 
+            // reportNumber_txtbx
+            // 
+            this.reportNumber_txtbx.Location = new System.Drawing.Point(221, 137);
+            this.reportNumber_txtbx.Name = "reportNumber_txtbx";
+            this.reportNumber_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportNumber_txtbx.TabIndex = 20;
+            this.reportNumber_txtbx.TextChanged += new System.EventHandler(this.reportNumber_txtbx_TextChanged);
+            // 
+            // reportEmail_txtbx
+            // 
+            this.reportEmail_txtbx.Location = new System.Drawing.Point(221, 109);
+            this.reportEmail_txtbx.Name = "reportEmail_txtbx";
+            this.reportEmail_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportEmail_txtbx.TabIndex = 19;
+            this.reportEmail_txtbx.TextChanged += new System.EventHandler(this.reportEmail_txtbx_TextChanged);
+            // 
+            // reportName_txtbx
+            // 
+            this.reportName_txtbx.Location = new System.Drawing.Point(221, 82);
+            this.reportName_txtbx.Name = "reportName_txtbx";
+            this.reportName_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportName_txtbx.TabIndex = 18;
+            this.reportName_txtbx.Text = "Full Name";
+            this.reportName_txtbx.TextChanged += new System.EventHandler(this.reportName_txtbx_TextChanged);
+            // 
+            // reportNumber_lbl
+            // 
+            this.reportNumber_lbl.AutoSize = true;
+            this.reportNumber_lbl.Location = new System.Drawing.Point(37, 137);
+            this.reportNumber_lbl.Name = "reportNumber_lbl";
+            this.reportNumber_lbl.Size = new System.Drawing.Size(78, 13);
+            this.reportNumber_lbl.TabIndex = 17;
+            this.reportNumber_lbl.Text = "Phone Number";
+            // 
+            // reportEmail_lbl
+            // 
+            this.reportEmail_lbl.AutoSize = true;
+            this.reportEmail_lbl.Location = new System.Drawing.Point(37, 108);
+            this.reportEmail_lbl.Name = "reportEmail_lbl";
+            this.reportEmail_lbl.Size = new System.Drawing.Size(35, 13);
+            this.reportEmail_lbl.TabIndex = 16;
+            this.reportEmail_lbl.Text = "Email:";
+            // 
+            // reportName_lbl
+            // 
+            this.reportName_lbl.AutoSize = true;
+            this.reportName_lbl.Location = new System.Drawing.Point(37, 82);
+            this.reportName_lbl.Name = "reportName_lbl";
+            this.reportName_lbl.Size = new System.Drawing.Size(38, 13);
+            this.reportName_lbl.TabIndex = 15;
+            this.reportName_lbl.Text = "Name:";
+            // 
             // reportServiceType_lbl
             // 
             this.reportServiceType_lbl.AutoSize = true;
@@ -288,59 +340,8 @@
             this.serviceType_dropdown.Name = "serviceType_dropdown";
             this.serviceType_dropdown.Size = new System.Drawing.Size(208, 21);
             this.serviceType_dropdown.TabIndex = 13;
+            this.serviceType_dropdown.Visible = false;
             this.serviceType_dropdown.SelectedIndexChanged += new System.EventHandler(this.serviceType_dropdown_SelectedIndexChanged_1);
-            // 
-            // reportName_lbl
-            // 
-            this.reportName_lbl.AutoSize = true;
-            this.reportName_lbl.Location = new System.Drawing.Point(37, 82);
-            this.reportName_lbl.Name = "reportName_lbl";
-            this.reportName_lbl.Size = new System.Drawing.Size(38, 13);
-            this.reportName_lbl.TabIndex = 15;
-            this.reportName_lbl.Text = "Name:";
-            // 
-            // reportEmail_lbl
-            // 
-            this.reportEmail_lbl.AutoSize = true;
-            this.reportEmail_lbl.Location = new System.Drawing.Point(37, 108);
-            this.reportEmail_lbl.Name = "reportEmail_lbl";
-            this.reportEmail_lbl.Size = new System.Drawing.Size(35, 13);
-            this.reportEmail_lbl.TabIndex = 16;
-            this.reportEmail_lbl.Text = "Email:";
-            // 
-            // reportNumber_lbl
-            // 
-            this.reportNumber_lbl.AutoSize = true;
-            this.reportNumber_lbl.Location = new System.Drawing.Point(37, 137);
-            this.reportNumber_lbl.Name = "reportNumber_lbl";
-            this.reportNumber_lbl.Size = new System.Drawing.Size(78, 13);
-            this.reportNumber_lbl.TabIndex = 17;
-            this.reportNumber_lbl.Text = "Phone Number";
-            // 
-            // reportName_txtbx
-            // 
-            this.reportName_txtbx.Location = new System.Drawing.Point(221, 82);
-            this.reportName_txtbx.Name = "reportName_txtbx";
-            this.reportName_txtbx.Size = new System.Drawing.Size(100, 20);
-            this.reportName_txtbx.TabIndex = 18;
-            this.reportName_txtbx.Text = "Full Name";
-            this.reportName_txtbx.TextChanged += new System.EventHandler(this.reportName_txtbx_TextChanged);
-            // 
-            // reportEmail_txtbx
-            // 
-            this.reportEmail_txtbx.Location = new System.Drawing.Point(221, 109);
-            this.reportEmail_txtbx.Name = "reportEmail_txtbx";
-            this.reportEmail_txtbx.Size = new System.Drawing.Size(100, 20);
-            this.reportEmail_txtbx.TabIndex = 19;
-            this.reportEmail_txtbx.TextChanged += new System.EventHandler(this.reportEmail_txtbx_TextChanged);
-            // 
-            // reportNumber_txtbx
-            // 
-            this.reportNumber_txtbx.Location = new System.Drawing.Point(221, 137);
-            this.reportNumber_txtbx.Name = "reportNumber_txtbx";
-            this.reportNumber_txtbx.Size = new System.Drawing.Size(100, 20);
-            this.reportNumber_txtbx.TabIndex = 20;
-            this.reportNumber_txtbx.TextChanged += new System.EventHandler(this.reportNumber_txtbx_TextChanged);
             // 
             // ReportIssuesForm
             // 
