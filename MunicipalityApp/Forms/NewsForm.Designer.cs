@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewsForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.news_story1 = new System.Windows.Forms.Panel();
             this.morebtn = new System.Windows.Forms.Button();
             this.category = new System.Windows.Forms.Label();
@@ -49,7 +44,6 @@
             this.category3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
             this.news_story1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.news_story2.SuspendLayout();
@@ -57,47 +51,6 @@
             this.news_story3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.home_news_menu,
-            this.menu_news_menu,
-            this.toolStripMenuItem3,
-            this.contact_news_menu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(875, 28);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // home_news_menu
-            // 
-            this.home_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_news_menu.Name = "home_news_menu";
-            this.home_news_menu.Size = new System.Drawing.Size(57, 24);
-            this.home_news_menu.Text = "Home";
-            // 
-            // menu_news_menu
-            // 
-            this.menu_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_news_menu.Name = "menu_news_menu";
-            this.menu_news_menu.Size = new System.Drawing.Size(54, 24);
-            this.menu_news_menu.Text = "Menu";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(56, 24);
-            this.toolStripMenuItem3.Text = "About";
-            // 
-            // contact_news_menu
-            // 
-            this.contact_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contact_news_menu.Name = "contact_news_menu";
-            this.contact_news_menu.Size = new System.Drawing.Size(85, 24);
-            this.contact_news_menu.Text = "Contact Us";
             // 
             // news_story1
             // 
@@ -149,9 +102,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 212);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "New pothole ";
             // 
             // news_story2
             // 
@@ -189,9 +142,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(26, 57);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(14, 54);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 129);
+            this.pictureBox2.Size = new System.Drawing.Size(167, 152);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -200,9 +154,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(23, 212);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.label2.Text = "Sanitation issues rise";
             // 
             // news_story3
             // 
@@ -230,17 +184,19 @@
             // category3
             // 
             this.category3.AutoSize = true;
-            this.category3.Location = new System.Drawing.Point(90, 0);
+            this.category3.Location = new System.Drawing.Point(78, 12);
             this.category3.Name = "category3";
-            this.category3.Size = new System.Drawing.Size(35, 13);
+            this.category3.Size = new System.Drawing.Size(29, 13);
             this.category3.TabIndex = 2;
-            this.category3.Text = "label6";
+            this.category3.Text = "Fires";
+            this.category3.Click += new System.EventHandler(this.category3_Click);
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(26, 57);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(3, 54);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(128, 122);
+            this.pictureBox3.Size = new System.Drawing.Size(190, 155);
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
             // 
@@ -249,9 +205,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(23, 212);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
+            this.label3.Text = "Big fires!";
             // 
             // NewsForm
             // 
@@ -262,14 +218,9 @@
             this.Controls.Add(this.news_story3);
             this.Controls.Add(this.news_story2);
             this.Controls.Add(this.news_story1);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "NewsForm";
             this.Text = "NewsForm";
             this.Load += new System.EventHandler(this.NewsForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.news_story1.ResumeLayout(false);
             this.news_story1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -280,17 +231,10 @@
             this.news_story3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem home_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem contact_news_menu;
         private System.Windows.Forms.Panel news_story1;
         private System.Windows.Forms.Panel news_story2;
         private System.Windows.Forms.Panel news_story3;

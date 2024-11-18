@@ -87,6 +87,12 @@
     <Compile Include="Classes\Part 2\EventManager.cs" />
     <Compile Include="Classes\ServiceRequest.cs" />
     <Compile Include="Classes\ServiceRequestManager.cs" />
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EventsAnnouncementsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Trees\BinarySearchTree.cs" />
+    <EmbeddedResource Include="Forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EventsAnnouncementsForm.resx">
       <DependentUpon>EventsAnnouncementsForm.cs</DependentUpon>
     </EmbeddedResource>

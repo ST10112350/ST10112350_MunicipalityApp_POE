@@ -21,5 +21,10 @@ namespace MunicipalityApp.Forms
         {
 
         }
+
+        private void category3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace MunicipalityApp.Classes
 {
     public class FormController
     {
+        private Form currentForm;
+
         private IssueManager issueManager = new IssueManager();
         private ServiceRequestManager serviceRequestManager = new ServiceRequestManager();
         private SortedDictionary<DateTime, List<AnnouncementClass>> announcements = new SortedDictionary<DateTime, List<AnnouncementClass>>();
@@ -19,10 +21,14 @@ namespace MunicipalityApp.Classes
         /// </summary>
         public void ShowReportIssuesForm()
         {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
 
             ReportIssuesForm reportForm = new ReportIssuesForm(issueManager);
-            reportForm.Show();
-            //currentForm.hide();
+            currentForm = reportForm;
+            currentForm.Show();
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -32,8 +38,14 @@ namespace MunicipalityApp.Classes
         /// </summary>
         public void ShowEventsForm()
         {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+
             EventsAnnouncementsForm eventsForm = new EventsAnnouncementsForm();
-            eventsForm.Show();
+            currentForm = eventsForm;
+            currentForm.Show();
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -43,8 +55,14 @@ namespace MunicipalityApp.Classes
         /// </summary>
         public void ShowMenuForm()
         {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+
             MenuForm1 menuForm = new MenuForm1();
-            menuForm.Show();
+            currentForm = menuForm;
+            currentForm.Show();
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -52,10 +70,16 @@ namespace MunicipalityApp.Classes
         /// <summary>
         /// Show the Service Request Status Form
         /// </summary>
-        public void showStatusForm()
+        public void ShowStatusForm()
         {
-            ServiceRequestStatusForm statusForm = new ServiceRequestStatusForm(serviceRequestManager);
-            statusForm.Show();
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+
+            ServiceRequestStatusForm statusForm = new ServiceRequestStatusForm(serviceRequestManager); 
+            currentForm = statusForm; 
+            currentForm.Show();
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -63,13 +87,38 @@ namespace MunicipalityApp.Classes
         /// <summary>
         /// Show the Request Service Form
         /// </summary>
-        public void showRequestForm()
+        public void ShowRequestForm()
         {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+
             RequestServiceForm requestForm = new RequestServiceForm(serviceRequestManager);
-            requestForm.Show();
+            currentForm = requestForm;
+            currentForm.Show();
         }
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Menu strip naviation
+        /// </summary>
+        public void ShowHomeForm()
+        {
+            Home homeForm = new Home();
+            homeForm.Show();
+        }
+
+        public void ShowNewsForm()
+        {
+            NewsForm newsForm = new NewsForm();
+            newsForm.Show();
+        }
+
+        public void ShowContactAboutForm()
+        {
+            
+        }
     }
 }
-
 //------------------------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------------------------------------//

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MunicipalityApp.Classes;
+using MunicipalityApp.Forms;
 
 
 namespace MunicipalityApp
@@ -20,6 +21,10 @@ namespace MunicipalityApp
         {
             InitializeComponent();
             formController = new FormController(); // Initialize  form controller
+                                                   // Create an instance of MenuStripControl and add it to the form
+            BaseForm menuStripControl = new BaseForm();
+            menuStripControl.Dock = DockStyle.Top; // Optional: Dock it to the top of the form
+            this.Controls.Add(menuStripControl);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,7 +50,7 @@ namespace MunicipalityApp
 
         private void option3btn_Click(object sender, EventArgs e)
         {
-            formController.showStatusForm(); // Method in FormController to show service request status   
+            formController.ShowStatusForm(); // Method in FormController to show service request status   
 
         }
 

@@ -122,14 +122,17 @@ namespace MunicipalityApp.Forms
         {
             if (ValidateFields())
             {
-              // Create and add the service request
+                // Define the priority for the service request
+                int priority = CalculatePriority();
+                // Create and add the service request
                 serviceRequestManager.AddServiceRequest(new ServiceRequest(
                     -1, // Placeholder for ID, it will be set in ServiceRequestManager
                     "Pending",
                     serviceType,
                     userName,
                     userEmail,
-                    phoneNumber
+                    phoneNumber,
+                    priority
                 ));
 
                 // Success message
@@ -147,6 +150,10 @@ namespace MunicipalityApp.Forms
         {
 
         }
-    }
+        private int CalculatePriority()
+        { 
+            return 1;  
+        }
+        }
 }
 ////////////////////////////////////////////////////////////////[END]///////////////////////////////////////////////////////////////////////

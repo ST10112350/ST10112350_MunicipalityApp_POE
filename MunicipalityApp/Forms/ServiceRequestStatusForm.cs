@@ -112,7 +112,7 @@ namespace MunicipalityApp.Forms
         /// </summary>
         private void request_btn_Click(object sender, EventArgs e)
         {
-            formController.showRequestForm();
+            formController.ShowRequestForm();
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

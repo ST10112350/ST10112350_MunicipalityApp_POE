@@ -41,12 +41,9 @@
             this.attach_btn = new System.Windows.Forms.Button();
             this.no_btn = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.report_menuStrip = new System.Windows.Forms.MenuStrip();
-            this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.attachedFiles_listBox = new System.Windows.Forms.ListBox();
             this.category_comboBox = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -63,7 +60,6 @@
             this.issueDelete_button = new System.Windows.Forms.RadioButton();
             this.issues_listbox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.report_menuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,9 +72,9 @@
             this.issues_lbl.ForeColor = System.Drawing.Color.Black;
             this.issues_lbl.Location = new System.Drawing.Point(32, 31);
             this.issues_lbl.Name = "issues_lbl";
-            this.issues_lbl.Size = new System.Drawing.Size(344, 25);
+            this.issues_lbl.Size = new System.Drawing.Size(499, 25);
             this.issues_lbl.TabIndex = 0;
-            this.issues_lbl.Text = "Please fill in the following information:";
+            this.issues_lbl.Text = "Please fill in the following information to report an issue:";
             // 
             // location_txtbx
             // 
@@ -175,52 +171,12 @@
             this.no_btn.Text = "No";
             this.no_btn.UseVisualStyleBackColor = true;
             // 
-            // report_menuStrip
-            // 
-            this.report_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.home_news_menu,
-            this.menu_news_menu,
-            this.toolStripMenuItem3,
-            this.contact_news_menu});
-            this.report_menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.report_menuStrip.Name = "report_menuStrip";
-            this.report_menuStrip.Size = new System.Drawing.Size(1464, 28);
-            this.report_menuStrip.TabIndex = 13;
-            this.report_menuStrip.Text = "menuStrip1";
-            // 
-            // home_news_menu
-            // 
-            this.home_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_news_menu.Name = "home_news_menu";
-            this.home_news_menu.Size = new System.Drawing.Size(57, 24);
-            this.home_news_menu.Text = "Home";
-            // 
-            // menu_news_menu
-            // 
-            this.menu_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_news_menu.Name = "menu_news_menu";
-            this.menu_news_menu.Size = new System.Drawing.Size(54, 24);
-            this.menu_news_menu.Text = "Menu";
-            this.menu_news_menu.Click += new System.EventHandler(this.menu_news_menu_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(56, 24);
-            this.toolStripMenuItem3.Text = "About";
-            // 
-            // contact_news_menu
-            // 
-            this.contact_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contact_news_menu.Name = "contact_news_menu";
-            this.contact_news_menu.Size = new System.Drawing.Size(85, 24);
-            this.contact_news_menu.Text = "Contact Us";
-            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.attachedFiles_listBox);
             this.panel2.Controls.Add(this.category_comboBox);
             this.panel2.Controls.Add(this.progressBar1);
@@ -247,6 +203,26 @@
             this.panel2.Size = new System.Drawing.Size(722, 701);
             this.panel2.TabIndex = 16;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.label3.Location = new System.Drawing.Point(52, 485);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 17);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Files that will be attached:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.label2.Location = new System.Drawing.Point(514, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 17);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "progress bar!";
+            // 
             // attachedFiles_listBox
             // 
             this.attachedFiles_listBox.FormattingEnabled = true;
@@ -267,7 +243,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(504, 72);
+            this.progressBar1.Location = new System.Drawing.Point(507, 82);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 23;
@@ -358,9 +334,10 @@
             // issueDelete_button
             // 
             this.issueDelete_button.AutoSize = true;
+            this.issueDelete_button.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.issueDelete_button.Location = new System.Drawing.Point(69, 328);
             this.issueDelete_button.Name = "issueDelete_button";
-            this.issueDelete_button.Size = new System.Drawing.Size(59, 17);
+            this.issueDelete_button.Size = new System.Drawing.Size(69, 21);
             this.issueDelete_button.TabIndex = 2;
             this.issueDelete_button.TabStop = true;
             this.issueDelete_button.Text = "Delete ";
@@ -379,11 +356,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 19);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(33, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(175, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "All Reported Issues";
             // 
             // ReportIssuesForm
             // 
@@ -394,19 +372,15 @@
             this.ClientSize = new System.Drawing.Size(1464, 753);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.report_menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportIssuesForm";
             this.Text = "Report Issues";
             this.Load += new System.EventHandler(this.ReportIssuesForm_Load);
-            this.report_menuStrip.ResumeLayout(false);
-            this.report_menuStrip.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -424,11 +398,6 @@
         private System.Windows.Forms.Button attach_btn;
         private System.Windows.Forms.RadioButton no_btn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.MenuStrip report_menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem home_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem contact_news_menu;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox reportNumber_txtbx;
         private System.Windows.Forms.TextBox reportEmail_txtbx;
@@ -446,5 +415,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox attachedFiles_listBox;
         private System.Windows.Forms.RadioButton issueDelete_button;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

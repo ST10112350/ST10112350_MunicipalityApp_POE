@@ -311,14 +311,7 @@ namespace MunicipalityApp
             }
         }
 
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        /// <summary>
-        /// Menu strip options
-        /// </summary>
-        private void menu_news_menu_Click(object sender, EventArgs e)
-        {
-            FormController.showMenuForm();
-        }
+        
     }
 }
 
