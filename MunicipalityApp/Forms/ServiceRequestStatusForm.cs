@@ -89,6 +89,23 @@ namespace MunicipalityApp.Forms
             LoadAllServiceRequests();
         }
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        
+        /// <summary>
+        /// Loads all service requests into the list box.
+        /// </summary>
+        private void LoadAllServiceRequests()
+        {
+            serviceRequests_Results.Items.Clear();
+            displayedServiceRequests.Clear(); // Clear previous entries
+
+            var serviceRequests = serviceRequestManager.GetAllServiceRequests();
+            foreach (var request in serviceRequests)
+            {
+                serviceRequests_Results.Items.Add(request.ServiceType);
+                displayedServiceRequests[request.ServiceType] = request;
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Redirecting to the form to create a new Service Request
@@ -178,21 +195,7 @@ namespace MunicipalityApp.Forms
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-        /// <summary>
-        /// Loads all service requests into the list box.
-        /// </summary>
-        private void LoadAllServiceRequests()
-        {
-            serviceRequests_Results.Items.Clear();
-            displayedServiceRequests.Clear(); // Clear previous entries
-
-            var serviceRequests = serviceRequestManager.GetAllServiceRequests();
-            foreach (var request in serviceRequests)
-            {
-                serviceRequests_Results.Items.Add(request.ServiceType);
-                displayedServiceRequests[request.ServiceType] = request;
-            }
-        }
+       
 
     }
 }

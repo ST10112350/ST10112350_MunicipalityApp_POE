@@ -12,18 +12,13 @@ namespace MunicipalityApp.Classes
         public string Category { get; set; }
         public string Description { get; set; }
         public string AttachedFile { get; set; }
-        public bool RequestService { get; set; }
-        public string ServiceType { get; set; }
 
-        public IssueClass(string location, string category, string description, string attachedFile, bool requestService = false, string serviceType = "")
+        public IssueClass(string location, string category, string description, string attachedFile)
         {
             Location = location;
             Category = category;
             Description = description;
             AttachedFile = attachedFile;
-            RequestService = requestService;
-            ServiceType = serviceType;
-
         }
     }
 }

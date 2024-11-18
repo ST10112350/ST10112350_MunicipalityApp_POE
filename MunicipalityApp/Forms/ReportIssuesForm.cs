@@ -23,15 +23,11 @@ namespace MunicipalityApp
         private string userEmail = string.Empty; 
         private string userPhone = string.Empty;
         private IssueManager issueManager;
-        private ServiceRequestManager serviceRequestManager;
 
         public ReportIssuesForm(IssueManager manager, ServiceRequestManager requestManager)
         {
             InitializeComponent();
             issueManager = manager; // Initialize IssueManager
-            //serviceType_dropdown.Visible = false; // Initially hide the dropdown
-            //PopulateServiceTypeDropdown();
-            serviceRequestManager = requestManager;
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -46,8 +42,6 @@ namespace MunicipalityApp
         /// <summary>
         /// User input for the report
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 
         private void reportName_txtbx_TextChanged(object sender, EventArgs e)
         {
@@ -79,48 +73,13 @@ namespace MunicipalityApp
             description = discription_txtbx.Text; 
         }
 
-        /// <summary>
-        /// Request service button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-       /* private void requestService_btn_Click_1(object sender, EventArgs e)
-        {
-            serviceType_dropdown.Visible = true; // Show the dropdown when button is clicked
-        }
-
-        private void serviceType_dropdown_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            serviceType = serviceType_dropdown.SelectedItem?.ToString();
-
-            if (!string.IsNullOrEmpty(serviceType))
-            {
-                // Create and add the service request
-                ServiceRequest newRequest = new ServiceRequest(-1, "Pending", userName, userEmail, userPhone, serviceType); 
-                serviceRequestManager.AddServiceRequest(newRequest);
-            }
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        /// <summary>
-        /// Populate the service type dropdown
-        /// </summary>
-        private void PopulateServiceTypeDropdown() 
-        { 
-            serviceType_dropdown.Items.AddRange(new string[] 
-            { 
-                "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Ste Disposal", 
-                "Water Leak Reporting", "Sewage Issues", "Public Health Inspections", "Animal Control", "Park Maintenance", 
-                "Facility Booking", "Playground Repairs", "Community Safety", "Littering Reporting", "Tree Maintenance" 
-            }); 
-        }*/
+    
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// Submit the issue
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+    
         private void submit_btn_Click(object sender, EventArgs e)
         {
             // Create a new IssueClass instance with collected data
@@ -224,4 +183,4 @@ namespace MunicipalityApp
        
     }
 }
-//---------------------------------------------------------END-----------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------//
