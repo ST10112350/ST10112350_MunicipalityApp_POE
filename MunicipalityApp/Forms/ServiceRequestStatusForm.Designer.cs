@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceRequestStatusForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,6 +170,7 @@
             this.Controls.Add(this.request_btn);
             this.Controls.Add(this.serviceRequests_Results);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ServiceRequestStatusForm";
             this.Text = "ServiceRequestStatusForm";
             this.menuStrip1.ResumeLayout(false);

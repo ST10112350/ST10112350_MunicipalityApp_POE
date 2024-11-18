@@ -35,10 +35,8 @@
             this.report_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.events_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.service_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.starts_menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // starts_menu
@@ -88,18 +86,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(740, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 54);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.toolStripSeparator1.Size = new System.Drawing.Size(57, 6);
             // 
             // service_menu
             // 
@@ -108,19 +95,18 @@
             this.service_menu.Text = "Request Service Status";
             this.service_menu.Click += new System.EventHandler(this.service_menu_Click);
             // 
-            // StartForm
+            // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.starts_menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.starts_menu;
-            this.Name = "StartForm";
+            this.Name = "Home";
             this.Text = "StartForm";
             this.starts_menu.ResumeLayout(false);
             this.starts_menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +120,6 @@
         private System.Windows.Forms.ToolStripMenuItem report_menu;
         private System.Windows.Forms.ToolStripMenuItem events_menu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem service_menu;
     }
 }

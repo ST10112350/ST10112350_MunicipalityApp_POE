@@ -41,12 +41,13 @@
             this.attach_btn = new System.Windows.Forms.Button();
             this.no_btn = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.report_menuStrip = new System.Windows.Forms.MenuStrip();
             this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.attachedFiles_listBox = new System.Windows.Forms.ListBox();
             this.category_comboBox = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.date_lbl = new System.Windows.Forms.Label();
@@ -59,10 +60,10 @@
             this.reportName_lbl = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.issueDelete_button = new System.Windows.Forms.RadioButton();
             this.issues_listbox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.attachedFiles_listBox = new System.Windows.Forms.ListBox();
-            this.menuStrip1.SuspendLayout();
+            this.report_menuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             this.location_txtbx.Location = new System.Drawing.Point(221, 219);
             this.location_txtbx.Name = "location_txtbx";
-            this.location_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.location_txtbx.Size = new System.Drawing.Size(200, 20);
             this.location_txtbx.TabIndex = 1;
             this.location_txtbx.TextChanged += new System.EventHandler(this.location_txtbx_TextChanged);
             // 
@@ -91,14 +92,14 @@
             // 
             this.discription_txtbx.Location = new System.Drawing.Point(221, 245);
             this.discription_txtbx.Name = "discription_txtbx";
-            this.discription_txtbx.Size = new System.Drawing.Size(153, 20);
+            this.discription_txtbx.Size = new System.Drawing.Size(200, 20);
             this.discription_txtbx.TabIndex = 2;
             this.discription_txtbx.TextChanged += new System.EventHandler(this.discription_txtbx_TextChanged);
             // 
             // submit_btn
             // 
-            this.submit_btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submit_btn.Location = new System.Drawing.Point(359, 536);
+            this.submit_btn.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.submit_btn.Location = new System.Drawing.Point(305, 643);
             this.submit_btn.Name = "submit_btn";
             this.submit_btn.Size = new System.Drawing.Size(116, 41);
             this.submit_btn.TabIndex = 3;
@@ -114,49 +115,46 @@
             // 
             this.attach_lbl.AutoSize = true;
             this.attach_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.attach_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attach_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.attach_lbl.Location = new System.Drawing.Point(52, 374);
             this.attach_lbl.Name = "attach_lbl";
-            this.attach_lbl.Size = new System.Drawing.Size(203, 20);
+            this.attach_lbl.Size = new System.Drawing.Size(184, 17);
             this.attach_lbl.TabIndex = 5;
             this.attach_lbl.Text = "Would you like Attach File? :";
             // 
             // location_lbl
             // 
             this.location_lbl.AutoSize = true;
-            this.location_lbl.BackColor = System.Drawing.Color.Gray;
-            this.location_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location_lbl.Location = new System.Drawing.Point(53, 222);
+            this.location_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.location_lbl.Location = new System.Drawing.Point(37, 222);
             this.location_lbl.Name = "location_lbl";
-            this.location_lbl.Size = new System.Drawing.Size(71, 20);
+            this.location_lbl.Size = new System.Drawing.Size(66, 17);
             this.location_lbl.TabIndex = 6;
             this.location_lbl.Text = "Location:";
             // 
             // description_lbl
             // 
             this.description_lbl.AutoSize = true;
-            this.description_lbl.BackColor = System.Drawing.Color.Gray;
-            this.description_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.description_lbl.Location = new System.Drawing.Point(52, 245);
+            this.description_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.description_lbl.Location = new System.Drawing.Point(37, 248);
             this.description_lbl.Name = "description_lbl";
-            this.description_lbl.Size = new System.Drawing.Size(128, 20);
+            this.description_lbl.Size = new System.Drawing.Size(109, 17);
             this.description_lbl.TabIndex = 7;
             this.description_lbl.Text = "Issue Description:";
             // 
             // category_lbl
             // 
             this.category_lbl.AutoSize = true;
-            this.category_lbl.BackColor = System.Drawing.Color.Gray;
-            this.category_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.category_lbl.Location = new System.Drawing.Point(52, 308);
+            this.category_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.category_lbl.Location = new System.Drawing.Point(37, 303);
             this.category_lbl.Name = "category_lbl";
-            this.category_lbl.Size = new System.Drawing.Size(130, 20);
+            this.category_lbl.Size = new System.Drawing.Size(117, 17);
             this.category_lbl.TabIndex = 8;
             this.category_lbl.Text = "Select a category:";
             // 
             // attach_btn
             // 
-            this.attach_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attach_btn.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.attach_btn.Location = new System.Drawing.Point(52, 397);
             this.attach_btn.Name = "attach_btn";
             this.attach_btn.Size = new System.Drawing.Size(111, 36);
@@ -168,27 +166,27 @@
             // no_btn
             // 
             this.no_btn.AutoSize = true;
-            this.no_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.no_btn.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.no_btn.Location = new System.Drawing.Point(207, 403);
             this.no_btn.Name = "no_btn";
-            this.no_btn.Size = new System.Drawing.Size(48, 24);
+            this.no_btn.Size = new System.Drawing.Size(45, 21);
             this.no_btn.TabIndex = 11;
             this.no_btn.TabStop = true;
             this.no_btn.Text = "No";
             this.no_btn.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
+            // report_menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.report_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.home_news_menu,
             this.menu_news_menu,
             this.toolStripMenuItem3,
             this.contact_news_menu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1081, 28);
-            this.menuStrip1.TabIndex = 13;
-            this.menuStrip1.Text = "menuStrip1";
+            this.report_menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.report_menuStrip.Name = "report_menuStrip";
+            this.report_menuStrip.Size = new System.Drawing.Size(1464, 28);
+            this.report_menuStrip.TabIndex = 13;
+            this.report_menuStrip.Text = "menuStrip1";
             // 
             // home_news_menu
             // 
@@ -203,6 +201,7 @@
             this.menu_news_menu.Name = "menu_news_menu";
             this.menu_news_menu.Size = new System.Drawing.Size(54, 24);
             this.menu_news_menu.Text = "Menu";
+            this.menu_news_menu.Click += new System.EventHandler(this.menu_news_menu_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -245,22 +244,30 @@
             this.panel2.Controls.Add(this.category_lbl);
             this.panel2.Location = new System.Drawing.Point(347, 47);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(722, 591);
+            this.panel2.Size = new System.Drawing.Size(722, 701);
             this.panel2.TabIndex = 16;
+            // 
+            // attachedFiles_listBox
+            // 
+            this.attachedFiles_listBox.FormattingEnabled = true;
+            this.attachedFiles_listBox.Location = new System.Drawing.Point(52, 504);
+            this.attachedFiles_listBox.Name = "attachedFiles_listBox";
+            this.attachedFiles_listBox.Size = new System.Drawing.Size(290, 95);
+            this.attachedFiles_listBox.TabIndex = 25;
             // 
             // category_comboBox
             // 
             this.category_comboBox.FormattingEnabled = true;
-            this.category_comboBox.Location = new System.Drawing.Point(221, 310);
+            this.category_comboBox.Location = new System.Drawing.Point(221, 303);
             this.category_comboBox.Name = "category_comboBox";
-            this.category_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.category_comboBox.Size = new System.Drawing.Size(200, 21);
             this.category_comboBox.TabIndex = 24;
             this.category_comboBox.Text = "Category";
             this.category_comboBox.SelectedIndexChanged += new System.EventHandler(this.category_comboBox_SelectedIndexChanged);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(467, 478);
+            this.progressBar1.Location = new System.Drawing.Point(504, 72);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 23;
@@ -269,9 +276,10 @@
             // date_lbl
             // 
             this.date_lbl.AutoSize = true;
-            this.date_lbl.Location = new System.Drawing.Point(40, 182);
+            this.date_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
+            this.date_lbl.Location = new System.Drawing.Point(37, 179);
             this.date_lbl.Name = "date_lbl";
-            this.date_lbl.Size = new System.Drawing.Size(33, 13);
+            this.date_lbl.Size = new System.Drawing.Size(42, 17);
             this.date_lbl.TabIndex = 22;
             this.date_lbl.Text = "Date:";
             // 
@@ -287,7 +295,7 @@
             // 
             this.reportNumber_txtbx.Location = new System.Drawing.Point(221, 137);
             this.reportNumber_txtbx.Name = "reportNumber_txtbx";
-            this.reportNumber_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportNumber_txtbx.Size = new System.Drawing.Size(200, 20);
             this.reportNumber_txtbx.TabIndex = 20;
             this.reportNumber_txtbx.TextChanged += new System.EventHandler(this.reportNumber_txtbx_TextChanged);
             // 
@@ -295,7 +303,7 @@
             // 
             this.reportEmail_txtbx.Location = new System.Drawing.Point(221, 109);
             this.reportEmail_txtbx.Name = "reportEmail_txtbx";
-            this.reportEmail_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportEmail_txtbx.Size = new System.Drawing.Size(200, 20);
             this.reportEmail_txtbx.TabIndex = 19;
             this.reportEmail_txtbx.TextChanged += new System.EventHandler(this.reportEmail_txtbx_TextChanged);
             // 
@@ -303,46 +311,61 @@
             // 
             this.reportName_txtbx.Location = new System.Drawing.Point(221, 82);
             this.reportName_txtbx.Name = "reportName_txtbx";
-            this.reportName_txtbx.Size = new System.Drawing.Size(100, 20);
+            this.reportName_txtbx.Size = new System.Drawing.Size(200, 20);
             this.reportName_txtbx.TabIndex = 18;
-            this.reportName_txtbx.Text = "Full Name";
             this.reportName_txtbx.TextChanged += new System.EventHandler(this.reportName_txtbx_TextChanged);
             // 
             // reportNumber_lbl
             // 
             this.reportNumber_lbl.AutoSize = true;
+            this.reportNumber_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.reportNumber_lbl.Location = new System.Drawing.Point(37, 137);
             this.reportNumber_lbl.Name = "reportNumber_lbl";
-            this.reportNumber_lbl.Size = new System.Drawing.Size(78, 13);
+            this.reportNumber_lbl.Size = new System.Drawing.Size(108, 17);
             this.reportNumber_lbl.TabIndex = 17;
-            this.reportNumber_lbl.Text = "Phone Number";
+            this.reportNumber_lbl.Text = "Phone Number:";
             // 
             // reportEmail_lbl
             // 
             this.reportEmail_lbl.AutoSize = true;
+            this.reportEmail_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
             this.reportEmail_lbl.Location = new System.Drawing.Point(37, 108);
             this.reportEmail_lbl.Name = "reportEmail_lbl";
-            this.reportEmail_lbl.Size = new System.Drawing.Size(35, 13);
+            this.reportEmail_lbl.Size = new System.Drawing.Size(47, 17);
             this.reportEmail_lbl.TabIndex = 16;
             this.reportEmail_lbl.Text = "Email:";
             // 
             // reportName_lbl
             // 
             this.reportName_lbl.AutoSize = true;
+            this.reportName_lbl.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportName_lbl.Location = new System.Drawing.Point(37, 82);
             this.reportName_lbl.Name = "reportName_lbl";
-            this.reportName_lbl.Size = new System.Drawing.Size(38, 13);
+            this.reportName_lbl.Size = new System.Drawing.Size(51, 17);
             this.reportName_lbl.TabIndex = 15;
             this.reportName_lbl.Text = "Name:";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.issueDelete_button);
             this.panel1.Controls.Add(this.issues_listbox);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(8, 47);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 591);
             this.panel1.TabIndex = 17;
+            // 
+            // issueDelete_button
+            // 
+            this.issueDelete_button.AutoSize = true;
+            this.issueDelete_button.Location = new System.Drawing.Point(69, 328);
+            this.issueDelete_button.Name = "issueDelete_button";
+            this.issueDelete_button.Size = new System.Drawing.Size(59, 17);
+            this.issueDelete_button.TabIndex = 2;
+            this.issueDelete_button.TabStop = true;
+            this.issueDelete_button.Text = "Delete ";
+            this.issueDelete_button.UseVisualStyleBackColor = true;
+            this.issueDelete_button.CheckedChanged += new System.EventHandler(this.issueDelete_button_CheckedChanged);
             // 
             // issues_listbox
             // 
@@ -362,29 +385,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
-            // attachedFiles_listBox
-            // 
-            this.attachedFiles_listBox.FormattingEnabled = true;
-            this.attachedFiles_listBox.Location = new System.Drawing.Point(62, 452);
-            this.attachedFiles_listBox.Name = "attachedFiles_listBox";
-            this.attachedFiles_listBox.Size = new System.Drawing.Size(120, 95);
-            this.attachedFiles_listBox.TabIndex = 25;
-            // 
             // ReportIssuesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1081, 668);
+            this.ClientSize = new System.Drawing.Size(1464, 753);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.report_menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportIssuesForm";
             this.Text = "Report Issues";
             this.Load += new System.EventHandler(this.ReportIssuesForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.report_menuStrip.ResumeLayout(false);
+            this.report_menuStrip.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -408,7 +424,7 @@
         private System.Windows.Forms.Button attach_btn;
         private System.Windows.Forms.RadioButton no_btn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip report_menuStrip;
         private System.Windows.Forms.ToolStripMenuItem home_news_menu;
         private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
@@ -429,5 +445,6 @@
         private System.Windows.Forms.ListBox issues_listbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox attachedFiles_listBox;
+        private System.Windows.Forms.RadioButton issueDelete_button;
     }
 }

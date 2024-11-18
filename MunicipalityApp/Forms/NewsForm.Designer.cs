@@ -263,6 +263,7 @@
             this.Controls.Add(this.news_story2);
             this.Controls.Add(this.news_story1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "NewsForm";
             this.Text = "NewsForm";

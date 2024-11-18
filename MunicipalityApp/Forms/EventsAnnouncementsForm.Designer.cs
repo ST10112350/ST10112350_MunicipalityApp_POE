@@ -41,7 +41,9 @@
             this.search_lb = new System.Windows.Forms.Label();
             this.search_txtbx = new System.Windows.Forms.TextBox();
             this.search_btn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -50,7 +52,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +96,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(564, 282);
+            this.label3.Location = new System.Drawing.Point(3, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 23);
             this.label3.TabIndex = 4;
@@ -103,10 +105,11 @@
             // announcementsListBox
             // 
             this.announcementsListBox.FormattingEnabled = true;
-            this.announcementsListBox.Location = new System.Drawing.Point(568, 328);
+            this.announcementsListBox.Location = new System.Drawing.Point(7, 56);
             this.announcementsListBox.Name = "announcementsListBox";
             this.announcementsListBox.Size = new System.Drawing.Size(220, 95);
             this.announcementsListBox.TabIndex = 5;
+            this.announcementsListBox.SelectedIndexChanged += new System.EventHandler(this.announcementsListBox_SelectedIndexChanged);
             // 
             // categoryComboBox
             // 
@@ -151,19 +154,27 @@
             this.search_btn.UseVisualStyleBackColor = true;
             this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.announcementsListBox);
+            this.panel1.Location = new System.Drawing.Point(857, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(290, 230);
+            this.panel1.TabIndex = 11;
+            // 
             // EventsAnnouncementsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1147, 672);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.search_btn);
             this.Controls.Add(this.search_txtbx);
             this.Controls.Add(this.search_lb);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.announcementsListBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.eventsHeading);
             this.Controls.Add(this.heading);
             this.Controls.Add(this.event_box);
@@ -174,6 +185,8 @@
             this.Load += new System.EventHandler(this.EventsAnnouncementsForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +206,6 @@
         private System.Windows.Forms.Label search_lb;
         private System.Windows.Forms.TextBox search_txtbx;
         private System.Windows.Forms.Button search_btn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

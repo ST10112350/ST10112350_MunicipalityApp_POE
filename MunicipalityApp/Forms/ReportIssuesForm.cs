@@ -23,6 +23,7 @@ namespace MunicipalityApp
         private string category = string.Empty;
         private string description = string.Empty;
         private IssueManager issueManager;
+        private FormController formController;
 
         private List<IssueClass> issueList = new List<IssueClass>();
         public ReportIssuesForm(IssueManager manager)
@@ -32,27 +33,39 @@ namespace MunicipalityApp
             PopulateCategoryComboBox();
             progressBar1.Maximum = 100;
             LoadAllIssues(); // Load issues when form loads
+            formController = new FormController();
         }
+
         private void ReportIssuesForm_Load(object sender, EventArgs e)
         {
             // Initialize progress bar and other form settings
             UpdateProgressBar();
         }
+        /// <summary>
+        /// Update the progress bar based on the user input
+        /// </summary>
 
         private void UpdateProgressBar()
         {
             int progress = 0;
-            if (!string.IsNullOrWhiteSpace(Name)) progress += 15;
-            if (!string.IsNullOrWhiteSpace(Email)) progress += 15;
-            if (!string.IsNullOrWhiteSpace(Phone)) progress += 15;
-            if (!string.IsNullOrWhiteSpace(location)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(Name)) progress += 12;
+            if (!string.IsNullOrWhiteSpace(Email)) progress += 12;
+            if (!string.IsNullOrWhiteSpace(Phone)) progress += 12;
+            if (!string.IsNullOrEmpty(dateTime)) progress += 12;
+            if (!string.IsNullOrWhiteSpace(location)) progress += 12;
             if (!string.IsNullOrWhiteSpace(category)) progress += 15;
             if (!string.IsNullOrWhiteSpace(description)) progress += 15;
             if (!string.IsNullOrEmpty(attachedFilePath)) progress += 10;
-            if (!string.IsNullOrEmpty(dateTime)) progress += 10;
+            
 
             progressBar1.Value = progress;
         }
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// User input for the report
@@ -86,7 +99,9 @@ namespace MunicipalityApp
             location = location_txtbx.Text;
             UpdateProgressBar();
         }
-
+        /// <summary>
+        /// Populate the category dropdown
+        /// </summary>
         private void PopulateCategoryComboBox()
         {
             category_comboBox.Items.AddRange(new string[]
@@ -95,22 +110,81 @@ namespace MunicipalityApp
             });
         }
 
+        private void category_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            category = category_comboBox.SelectedItem?.ToString();
+        }
+
         private void discription_txtbx_TextChanged(object sender, EventArgs e)
         {
             description = discription_txtbx.Text;
             UpdateProgressBar();
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//  
+
+        /// <summary>
+        /// attaching a file 
+        /// </summary>
+        private void attach_btn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // Set the dialog properties
+                openFileDialog.InitialDirectory = @"C:\"; // Set the initial directory
+                openFileDialog.Filter = "All Files (*.*)|*.*"; // Allow all file types
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true; // Restores the last selected directory
 
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    attachedFilePath = openFileDialog.FileName;
+                    UpdateFilePreview();
+                }
+            }
+        }
+
+        private void UpdateFilePreview()
+        {
+            attachedFiles_listBox.Items.Clear();
+            attachedFiles_listBox.Items.Add(attachedFilePath);
+            UpdateProgressBar();
+        }
+
+
+
+        public string GetAttachedFilePath()
+        {
+            return attachedFilePath;
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Submit the issue
         /// </summary>
 
+        private void submit_btn_Click(object sender, EventArgs e)
+        {
+            if (ValidateFields())
+            {
+                // Create a new IssueClass instance with collected data
+                IssueClass newIssue = new IssueClass(Name, Email, Phone, dateTime, location, category, description, GetAttachedFilePath());
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Add the issue
+                issueManager.AddIssue(newIssue);
 
+                // Success message and reset the form
+                MessageBox.Show("Issue reported successfully!");
+
+                // Reset the form fields
+                ResetForm();
+                UpdateProgressBar();
+                LoadAllIssues(); // Reload issues to include the newly added one }
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// Validation for textboxes and dropdown
         /// </summary>
@@ -147,75 +221,7 @@ namespace MunicipalityApp
             return isValid;
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        /// <summary>
-        /// attaching a file 
-        /// </summary>
-        private void attach_btn_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                // Set the dialog properties
-                openFileDialog.InitialDirectory = @"C:\"; // Set the initial directory
-                openFileDialog.Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png|All Files (*.*)|*.*"; // File filter
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.RestoreDirectory = true; // Restores the last selected directory
-
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    attachedFilePath = openFileDialog.FileName;
-                    UpdateFilePreview();
-                }
-            }
-        }
-
-        private void UpdateFilePreview()
-        {
-            attachedFiles_listBox.Items.Clear();
-            attachedFiles_listBox.Items.Add(attachedFilePath);
-            UpdateProgressBar();
-        }
-
-
-
-        public string GetAttachedFilePath()
-        {
-            return attachedFilePath;
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-            UpdateProgressBar();
-        }
-
-        private void category_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            category = category_comboBox.SelectedItem?.ToString();
-        }
-        private void submit_btn_Click(object sender, EventArgs e)
-        {
-            if (ValidateFields())
-            {
-                // Create a new IssueClass instance with collected data
-                IssueClass newIssue = new IssueClass(Name, Email, Phone, dateTime, location, category, description, GetAttachedFilePath());
-
-                // Add the issue
-                issueManager.AddIssue(newIssue);
-
-                // Success message and reset the form
-                MessageBox.Show("Issue reported successfully!");
-
-                // Reset the form fields
-                ResetForm();
-            }
-        }
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         private void LoadAllIssues()
         {
             issueList = issueManager.GetIssues(); // Get all issues from IssueManager
@@ -226,6 +232,11 @@ namespace MunicipalityApp
                 issues_listbox.Items.Add(issue.Location); // Display location in the list box
             }
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Display the issue details when selected
+        /// </summary>
+
         private void issues_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedLocation = issues_listbox.SelectedItem?.ToString();
@@ -238,7 +249,10 @@ namespace MunicipalityApp
                 }
             }
         }
-
+        /// <summary>
+        /// Display the issue details
+        /// </summary>
+        /// <param name="issue"></param>
         private void DisplayIssueDetails(IssueClass issue)
         {
             // Display the details in a MessageBox
@@ -258,7 +272,7 @@ namespace MunicipalityApp
 
         }
 
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         private void ResetForm()
         {
             reportName_txtbx.Text = "";
@@ -272,7 +286,40 @@ namespace MunicipalityApp
             attachedFilePath = "";
             UpdateProgressBar();
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Delete the selected issue
+        /// </summary>
+        private void issueDelete_button_CheckedChanged(object sender, EventArgs e)
+        {
+            if (issueDelete_button.Checked)
+            {
+                var selectedLocation = issues_listbox.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedLocation))
+                {
+                    var selectedIssue = issueList.Find(issue => issue.Location == selectedLocation);
+                    if (selectedIssue != null)
+                    {
+                        issueManager.GetIssues().Remove(selectedIssue); // Remove issue from IssueManager
+                        LoadAllIssues(); // Reload issues to reflect the deletion
+                        MessageBox.Show("Issue deleted successfully!");
+
+                        // Debug message to confirm deletion
+                        Console.WriteLine($"Deleted issue: {selectedIssue.Location}");
+                    }
+                }
+            }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Menu strip options
+        /// </summary>
+        private void menu_news_menu_Click(object sender, EventArgs e)
+        {
+            FormController.showMenuForm();
+        }
     }
 }
 
-//-----------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------[END]------------------------------------------------------------------------------------------------------------//

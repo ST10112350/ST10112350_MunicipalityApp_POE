@@ -31,6 +31,9 @@ namespace MunicipalityApp.Forms
             LoadAnnouncements(); // Load announcements on form initialization
         }
 
+        /// <summary>
+        /// Load events and announcements data
+        /// </summary>
         private void LoadData()
         {
             // Load events data
@@ -83,7 +86,8 @@ namespace MunicipalityApp.Forms
                 }
             };
 
-            // Load announcements data
+           
+            /// Load announcements data
             announcements = new Dictionary<string, AnnouncementClass>
             {
                 { "Loadshedding has been postponed", new AnnouncementClass("Loadshedding has been postponed", DateTime.Now) },
@@ -102,7 +106,11 @@ namespace MunicipalityApp.Forms
                 sortedEvents[eventEntry.Date].Add(eventEntry);
             }
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
+        /// <summary>
+        /// Populate the event_box with event titles
+        /// </summary>
         private void PopulateEventComboBox()
         {
             event_box.Items.Clear();
@@ -111,7 +119,12 @@ namespace MunicipalityApp.Forms
                 event_box.Items.Add(eventEntry);
             }
         }
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Event handler for the event_box SelectedIndexChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void event_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (event_box.SelectedItem != null)
@@ -155,7 +168,10 @@ namespace MunicipalityApp.Forms
                 }
             }
         }
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Event handler for the datePicker ValueChanged event
+        /// </summary>
         private void SearchEvents()
         {
             string categoryFilter = categoryComboBox.SelectedItem?.ToString();
@@ -172,13 +188,19 @@ namespace MunicipalityApp.Forms
                 event_box.Items.Add(ev.Title);
             }
         }
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Load categories into the categoryComboBox
+        /// </summary>
         private void LoadCategories()
         {
             var categories = events.Values.Select(e => e.Category).Distinct().ToList(); // Get distinct categories
             categoryComboBox.DataSource = categories; // Bind to ComboBox
         }
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Load announcements into the announcementsListBox
+        /// </summary>
         private void LoadAnnouncements()
         {
             // Clear existing items before loading
@@ -204,11 +226,16 @@ namespace MunicipalityApp.Forms
                 }
             }
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             formController.ShowEventsForm();
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Event handler for the search_txtbx TextChanged event
+        /// </summary>
 
         private void search_txtbx_TextChanged(object sender, EventArgs e)
         {
@@ -231,10 +258,13 @@ namespace MunicipalityApp.Forms
         {
             SearchEvents(); // Call the SearchEvents method to filter based on selected criteria
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private void EventsAnnouncementsForm_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }
+//----------------------------------------------------------------------------------------------[END]-------------------------------------------------------------------------------------------------------------------------------//
