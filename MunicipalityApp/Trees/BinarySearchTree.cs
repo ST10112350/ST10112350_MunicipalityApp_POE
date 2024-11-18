@@ -33,11 +33,13 @@ namespace MunicipalityApp.Trees
             root = null;
         }
 
+
         // Insert a new element into the BST
         public void Insert(T data)
         {
             root = InsertRec(root, data);
         }
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private Node InsertRec(Node root, T data)
         {
@@ -55,11 +57,15 @@ namespace MunicipalityApp.Trees
             return root;
         }
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
         // Find an element by ID
         public T Find(int id)
         {
             return FindRec(root, id);
         }
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private T FindRec(Node root, int id)
         {
@@ -74,6 +80,8 @@ namespace MunicipalityApp.Trees
                 return FindRec(root.Right, id);
         }
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
         // In-order traversal of the BST
         public IEnumerable<T> InOrderTraversal()
         {
@@ -82,6 +90,7 @@ namespace MunicipalityApp.Trees
             return result;
         }
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         private void InOrderRec(Node root, List<T> result)
         {
             if (root != null)
@@ -92,10 +101,62 @@ namespace MunicipalityApp.Trees
             }
         }
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
         internal void Delete(ServiceRequest requestToRemove)
         {
-            throw new NotImplementedException();
+            if (requestToRemove == null) return;
+
+            // Find the node to remove
+            var nodeToRemove = FindNode(root, requestToRemove);
+            if (nodeToRemove == null) return;
+
+            // Remove the node
+            root = DeleteRec(root, requestToRemove);
+        }
+
+        private Node FindNode(Node root, ServiceRequest request)
+        {
+            if (root == null) return null;
+
+            if ((root.Data as ServiceRequest).Id == request.Id)
+                return root;
+            else if (request.Id < (root.Data as ServiceRequest).Id)
+                return FindNode(root.Left, request);
+            else
+                return FindNode(root.Right, request);
+        }
+
+        private Node DeleteRec(Node root, ServiceRequest request)
+        {
+            if (root == null) return root;
+
+            if (request.Id < (root.Data as ServiceRequest).Id)
+                root.Left = DeleteRec(root.Left, request);
+            else if (request.Id > (root.Data as ServiceRequest).Id)
+                root.Right = DeleteRec(root.Right, request);
+            else
+            {
+                if (root.Left == null)
+                    return root.Right;
+                else if (root.Right == null)
+                    return root.Left;
+
+                Node temp = MinValueNode(root.Right);
+                root.Data = temp.Data;
+                root.Right = DeleteRec(root.Right, temp.Data as ServiceRequest);
+            }
+
+            return root;
+        }
+
+        private Node MinValueNode(Node node)
+        {
+            Node current = node;
+            while (current.Left != null)
+                current = current.Left;
+            return current;
         }
     }
 }
-           
+        //------------------------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------------------------------------//         
