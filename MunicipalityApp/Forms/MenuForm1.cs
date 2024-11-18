@@ -21,9 +21,10 @@ namespace MunicipalityApp
         {
             InitializeComponent();
             formController = new FormController(); // Initialize  form controller
-                                                   // Create an instance of MenuStripControl and add it to the form
+          
+            // Adds menu strip from base form
             BaseForm menuStripControl = new BaseForm();
-            menuStripControl.Dock = DockStyle.Top; // Optional: Dock it to the top of the form
+            menuStripControl.Dock = DockStyle.Top; 
         }
 
         private void label1_Click(object sender, EventArgs e)
