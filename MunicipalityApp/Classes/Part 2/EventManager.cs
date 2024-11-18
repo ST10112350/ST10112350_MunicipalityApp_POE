@@ -27,7 +27,7 @@ namespace MunicipalityApp.Classes
                                new DateTime(2024, 5, 3),
                                "Cape Town International Convention Centre",
                                "Music",
-                               "BackgroundImages/jazzfest_poster.jpg",
+                               "jazzfest_poster.jpg",
                                "http://tickets.com/jazzfest")
             },
             {

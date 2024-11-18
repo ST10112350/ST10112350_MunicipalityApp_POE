@@ -232,7 +232,7 @@ namespace MunicipalityApp
         private void LoadAllIssues()
         {
             issueList = issueManager.GetIssues(); // Get all issues from IssueManager
-            issues_listbox.Items.Clear();
+            //issues_listbox.Items.Clear();
 
             foreach (var issue in issueList)
             {
@@ -246,10 +246,10 @@ namespace MunicipalityApp
 
         private void issues_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedLocation = issues_listbox.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedLocation))
+            var selectedCategory = issues_listbox.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedCategory))
             {
-                var selectedIssue = issueList.Find(issue => issue.Location == selectedLocation);
+                var selectedIssue = issueList.Find(issue => issue.Category == selectedCategory);
                 if (selectedIssue != null)
                 {
                     DisplayIssueDetails(selectedIssue);

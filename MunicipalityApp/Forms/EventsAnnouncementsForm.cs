@@ -86,6 +86,26 @@ namespace MunicipalityApp.Forms
                         Size = new Size(360, 200)
                     };
 
+                    // Construct the full path to the image
+                    string imagePath = System.IO.Path.Combine(Application.StartupPath, "backgroundimages", selectedEvent.ImagePath);
+
+                    // Check if the image file exists before loading
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        try
+                        {
+                            eventPictureBox.Image = Image.FromFile(imagePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error loading image: " + ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Image not found at: " + imagePath);
+                    }
+
                     // Add controls to the panel
                     detailsForm.Controls.Add(titleLabel);
                     detailsForm.Controls.Add(dateLabel);
