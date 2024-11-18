@@ -37,9 +37,9 @@
             this.request_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.viewRequests_dropdown = new System.Windows.Forms.ComboBox();
-            this.requestReview_btn = new System.Windows.Forms.RadioButton();
             this.deleteRequest_btn = new System.Windows.Forms.RadioButton();
             this.viewAll_btn = new System.Windows.Forms.Button();
+            this.requestReview_btn = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,18 +122,6 @@
             this.viewRequests_dropdown.Text = "Service Type";
             this.viewRequests_dropdown.SelectedIndexChanged += new System.EventHandler(this.viewRequests_dropdown_SelectedIndexChanged);
             // 
-            // requestReview_btn
-            // 
-            this.requestReview_btn.AutoSize = true;
-            this.requestReview_btn.Location = new System.Drawing.Point(123, 449);
-            this.requestReview_btn.Name = "requestReview_btn";
-            this.requestReview_btn.Size = new System.Drawing.Size(104, 17);
-            this.requestReview_btn.TabIndex = 6;
-            this.requestReview_btn.TabStop = true;
-            this.requestReview_btn.Text = "Review Request";
-            this.requestReview_btn.UseVisualStyleBackColor = true;
-            this.requestReview_btn.CheckedChanged += new System.EventHandler(this.requestReview_btn_CheckedChanged);
-            // 
             // deleteRequest_btn
             // 
             this.deleteRequest_btn.AutoSize = true;
@@ -156,14 +144,26 @@
             this.viewAll_btn.UseVisualStyleBackColor = true;
             this.viewAll_btn.Click += new System.EventHandler(this.viewAll_btn_Click);
             // 
+            // requestReview_btn
+            // 
+            this.requestReview_btn.AutoSize = true;
+            this.requestReview_btn.Location = new System.Drawing.Point(123, 448);
+            this.requestReview_btn.Name = "requestReview_btn";
+            this.requestReview_btn.Size = new System.Drawing.Size(61, 17);
+            this.requestReview_btn.TabIndex = 10;
+            this.requestReview_btn.TabStop = true;
+            this.requestReview_btn.Text = "Review";
+            this.requestReview_btn.UseVisualStyleBackColor = true;
+            this.requestReview_btn.CheckedChanged += new System.EventHandler(this.requestReview_btn_CheckedChanged_1);
+            // 
             // ServiceRequestStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 645);
+            this.Controls.Add(this.requestReview_btn);
             this.Controls.Add(this.viewAll_btn);
             this.Controls.Add(this.deleteRequest_btn);
-            this.Controls.Add(this.requestReview_btn);
             this.Controls.Add(this.viewRequests_dropdown);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.request_btn);
@@ -189,8 +189,8 @@
         private System.Windows.Forms.Button request_btn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox viewRequests_dropdown;
-        private System.Windows.Forms.RadioButton requestReview_btn;
         private System.Windows.Forms.RadioButton deleteRequest_btn;
         private System.Windows.Forms.Button viewAll_btn;
+        private System.Windows.Forms.RadioButton requestReview_btn;
     }
 }

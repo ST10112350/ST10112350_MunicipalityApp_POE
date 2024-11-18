@@ -89,16 +89,17 @@ namespace MunicipalityApp.Classes
         /// <summary>
         /// Removes a service request by ID
         /// </summary>
-        /// <param name="id"></param>
-        public void RemoveServiceRequest(int id)
-        {
-            var requestToRemove = GetServiceRequest(id);
+      public void RemoveServiceRequest(ServiceRequest requestToRemove)
+      {
             if (requestToRemove != null)
             {
                 serviceRequests.Delete(requestToRemove);
                 SaveRequests(); // Update the saved file after deletion
+
+                // Debug message to confirm removal
+                Console.WriteLine($"Removed request: {requestToRemove.ServiceType}");
             }
-        }
+       }
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>

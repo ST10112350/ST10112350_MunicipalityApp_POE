@@ -103,18 +103,11 @@ namespace MunicipalityApp.Trees
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-        internal void Delete(ServiceRequest requestToRemove)
-        {
-            if (requestToRemove == null) return;
-
-            // Find the node to remove
-            var nodeToRemove = FindNode(root, requestToRemove);
-            if (nodeToRemove == null) return;
-
-            // Remove the node
-            root = DeleteRec(root, requestToRemove);
+        // Delete a node from the BST
+        public void Delete(T data) 
+        { 
+            root = DeleteRec(root, data); 
         }
-
         private Node FindNode(Node root, ServiceRequest request)
         {
             if (root == null) return null;
@@ -127,25 +120,24 @@ namespace MunicipalityApp.Trees
                 return FindNode(root.Right, request);
         }
 
-        private Node DeleteRec(Node root, ServiceRequest request)
+        private Node DeleteRec(Node root, T data)
         {
             if (root == null) return root;
 
-            if (request.Id < (root.Data as ServiceRequest).Id)
-                root.Left = DeleteRec(root.Left, request);
-            else if (request.Id > (root.Data as ServiceRequest).Id)
-                root.Right = DeleteRec(root.Right, request);
-            else
-            {
-                if (root.Left == null)
-                    return root.Right;
-                else if (root.Right == null)
-                    return root.Left;
+           int compare = data.CompareTo(root.Data);
+        if (compare < 0)
+            root.Left = DeleteRec(root.Left, data);
+        else if (compare > 0)
+            root.Right = DeleteRec(root.Right, data);
+        else
+        {
+            if (root.Left == null) return root.Right;
+            if (root.Right == null) return root.Left;
 
-                Node temp = MinValueNode(root.Right);
-                root.Data = temp.Data;
-                root.Right = DeleteRec(root.Right, temp.Data as ServiceRequest);
-            }
+            Node temp = MinValueNode(root.Right);
+            root.Data = temp.Data;
+            root.Right = DeleteRec(root.Right, temp.Data);
+        }
 
             return root;
         }

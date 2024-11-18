@@ -62,7 +62,7 @@ namespace MunicipalityApp.Forms
         { 
             requestStype_dropdown.Items.AddRange(new string[] 
             { 
-                "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Ste Disposal", 
+                "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Hazardous Waste Disposal", 
                 "Water Leak Reporting", "Sewage Issues", "Public Health Inspections", "Animal Control", "Park Maintenance", 
                 "Facility Booking", "Playground Repairs", "Community Safety", "Littering Reporting", "Tree Maintenance" 
             });

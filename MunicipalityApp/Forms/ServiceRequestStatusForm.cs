@@ -15,26 +15,26 @@ namespace MunicipalityApp.Forms
 {
     public partial class ServiceRequestStatusForm : Form
     {
-            private FormController formController;
-            private ServiceRequestManager serviceRequestManager;
-            private Dictionary<string, ServiceRequest> displayedServiceRequests;
+        private FormController formController;
+        private ServiceRequestManager serviceRequestManager;
+        private Dictionary<string, ServiceRequest> displayedServiceRequests;
 
         public ServiceRequestStatusForm(ServiceRequestManager manager)
-            {
-                InitializeComponent();
-                serviceRequestManager = manager;
-                formController = new FormController();
-                PopulateServiceTypeDropdown();
-                displayedServiceRequests = new Dictionary<string, ServiceRequest>();
+        {
+            InitializeComponent();
+            serviceRequestManager = manager;
+            formController = new FormController();
+            PopulateServiceTypeDropdown();
+            displayedServiceRequests = new Dictionary<string, ServiceRequest>();
         }
 
-            /// <summary>
-            /// Event handler for when a service type is selected from the dropdown.
-            /// </summary>
-            private void viewRequests_dropdown_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                LoadServiceRequestsByType(viewRequests_dropdown.SelectedItem.ToString());
-            }
+        /// <summary>
+        /// Event handler for when a service type is selected from the dropdown.
+        /// </summary>
+        private void viewRequests_dropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadServiceRequestsByType(viewRequests_dropdown.SelectedItem.ToString());
+        }
 
         /// <summary>
         /// Populates the dropdown with predefined service types and loads unique service types from existing requests.
@@ -43,7 +43,7 @@ namespace MunicipalityApp.Forms
         {
             viewRequests_dropdown.Items.AddRange(new string[]
             {
-                    "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Ste Disposal",
+                    "Pothole Repair", "Traffic Sign Issues", "Streetlight Repair", "Bulk Waste Collection", "Hazardous Waste Disposal",
                     "Water Leak Reporting", "Sewage Issues", "Public Health Inspections", "Animal Control", "Park Maintenance",
                     "Facility Booking", "Playground Repairs", "Community Safety", "Littering Reporting", "Tree Maintenance"
             });
@@ -59,7 +59,7 @@ namespace MunicipalityApp.Forms
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Loads service requests of the selected type into the list box.
@@ -67,112 +67,116 @@ namespace MunicipalityApp.Forms
         private void LoadServiceRequestsByType(string serviceType)
         {
             serviceRequests_Results.Items.Clear();
+            displayedServiceRequests.Clear();
             var serviceRequests = serviceRequestManager.GetAllServiceRequests();
             foreach (var request in serviceRequests)
             {
                 if (request.ServiceType == serviceType)
                 {
                     serviceRequests_Results.Items.Add(request.ServiceType); // Display only the service type
+                    displayedServiceRequests[request.ServiceType] = request;
                 }
             }
 
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Button to view all service requests
+        /// </summary>
+        private void viewAll_btn_Click(object sender, EventArgs e)
+        {
+            LoadAllServiceRequests();
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Redirecting to the form to create a new Service Request
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        private void request_btn_Click(object sender, EventArgs e)
+        {
+            formController.showRequestForm();
+        }
 
-            private void request_btn_Click(object sender, EventArgs e)
-            {
-                formController.showRequestForm();
-            }
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
         private void serviceRequests_Results_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Handle logic when a service request is selected from the list
-            var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
+           var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
             if (!string.IsNullOrEmpty(selectedServiceType) && displayedServiceRequests.ContainsKey(selectedServiceType))
             {
                 var selectedRequest = displayedServiceRequests[selectedServiceType];
-                DisplayServiceRequestDetails(selectedRequest); // Show details in a pop-up
-            }
-        }
-
-        private void requestReview_btn_CheckedChanged(object sender, EventArgs e)
-        { 
-            // Ensure the view details action is selected.
-            if (requestReview_btn.Checked)
-            {
-                deleteRequest_btn.Checked = false;
-                var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
-                if (!string.IsNullOrEmpty(selectedServiceType) && displayedServiceRequests.ContainsKey(selectedServiceType))
+                if (selectedRequest != null)
                 {
-                    var selectedRequest = displayedServiceRequests[selectedServiceType];
                     DisplayServiceRequestDetails(selectedRequest);
                 }
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void requestReview_btn_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (requestReview_btn.Checked)
+            {
+                var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedServiceType) && displayedServiceRequests.ContainsKey(selectedServiceType))
+                {
+                    var selectedRequest = displayedServiceRequests[selectedServiceType];
+                    if (selectedRequest != null)
+                    {
+                        DisplayServiceRequestDetails(selectedRequest);
+                    }
+                }
+            }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Displays the details of a selected service request in a new form.
         /// </summary>
         private void DisplayServiceRequestDetails(ServiceRequest request)
-            {
-                // Create a new form to display service request details
-                Form detailsForm = new Form
-                {
-                    Size = new Size(400, 300),
-                    Text = "Service Request Details"
-                };
-
-                // Create labels for service request details
-                Label idLabel = new Label { Text = $"ID: {request.Id}", Location = new Point(10, 10), AutoSize = true };
-                Label statusLabel = new Label { Text = $"Status: {request.Status}", Location = new Point(10, 40), AutoSize = true };
-                Label serviceTypeLabel = new Label { Text = $"Service Type: {request.ServiceType}", Location = new Point(10, 70), AutoSize = true };
-                Label userLabel = new Label { Text = $"User: {request.UserName}", Location = new Point(10, 100), AutoSize = true };
-                Label emailLabel = new Label { Text = $"Email: {request.UserEmail}", Location = new Point(10, 130), AutoSize = true };
-                Label phoneLabel = new Label { Text = $"Phone Number: {request.PhoneNumber}", Location = new Point(10, 160), AutoSize = true };
-
-                // Add labels to the details form
-                detailsForm.Controls.Add(idLabel);
-                detailsForm.Controls.Add(statusLabel);
-                detailsForm.Controls.Add(serviceTypeLabel);
-                detailsForm.Controls.Add(userLabel);
-                detailsForm.Controls.Add(emailLabel);
-                detailsForm.Controls.Add(phoneLabel);
-
-                // Show the details form as a modal dialog
-                detailsForm.ShowDialog();
-            }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        {
+            // Display the details in a MessageBox
+            MessageBox.Show(
+                $"ID: {request.Id}\n" +
+                $"Status: {request.Status}\n" +
+                $"Service Type: {request.ServiceType}\n" +
+                $"User: {request.UserName}\n" +
+                $"Email: {request.UserEmail}\n" +
+                $"Phone: {request.PhoneNumber}",
+                "Service Request Details",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+                );
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private void deleteRequest_btn_CheckedChanged(object sender, EventArgs e)
         {
-            // Ensure the delete action is selected.
             if (deleteRequest_btn.Checked)
             {
-               requestReview_btn.Checked = false;
-        var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
+                var selectedServiceType = serviceRequests_Results.SelectedItem?.ToString();
                 if (!string.IsNullOrEmpty(selectedServiceType) && displayedServiceRequests.ContainsKey(selectedServiceType))
                 {
                     var selectedRequest = displayedServiceRequests[selectedServiceType];
-                    serviceRequestManager.RemoveServiceRequest(selectedRequest.Id); // Remove the selected request
-                    LoadAllServiceRequests(); // Refresh the list box to show the changes
-                    MessageBox.Show("Service request removed successfully!");
+                    if (selectedRequest != null)
+                    {
+                        serviceRequestManager.RemoveServiceRequest(selectedRequest);
+                        displayedServiceRequests.Remove(selectedServiceType); // Also remove from displayed requests
+                        LoadAllServiceRequests(); // Refresh the list box to show the changes
+                        MessageBox.Show("Service request removed successfully!");
+
+                        // Debug message to check if deletion is called
+                        Console.WriteLine($"Deleted request: {selectedRequest.ServiceType}");
+                    }
                 }
             }
-        
+
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Loads all service requests into the list box.
@@ -180,25 +184,18 @@ namespace MunicipalityApp.Forms
         private void LoadAllServiceRequests()
         {
             serviceRequests_Results.Items.Clear();
+            displayedServiceRequests.Clear(); // Clear previous entries
+
             var serviceRequests = serviceRequestManager.GetAllServiceRequests();
             foreach (var request in serviceRequests)
             {
-                serviceRequests_Results.Items.Add(request.ServiceType); // Display only the service type
+                serviceRequests_Results.Items.Add(request.ServiceType);
+                displayedServiceRequests[request.ServiceType] = request;
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Button to view all service requests
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void viewAll_btn_Click(object sender, EventArgs e)
-        {
-            LoadAllServiceRequests();
-        }
     }
 }
-//////////////////////////////////////////////////////////////////////////////////////[END]/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------------------------------------//
 
 
