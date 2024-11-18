@@ -14,13 +14,15 @@ namespace MunicipalityApp.Classes
 {
 
     public class ServiceRequestManager
-    { // Manages the collection of service requests using a BST
+    { // Manages the collection of service requests using a BST and MaxHeap
 
         private BinarySearchTree<ServiceRequest> serviceRequests;
+        private MaxHeap priorityQueue;
 
         public ServiceRequestManager()
         {
             serviceRequests = new BinarySearchTree<ServiceRequest>();
+            priorityQueue = new MaxHeap();
             LoadRequests();
         }
 
@@ -30,8 +32,11 @@ namespace MunicipalityApp.Classes
         /// <param name="request"></param>
         public void AddServiceRequest(ServiceRequest request)
         {
-            request.Id = GenerateRequestId();
-            serviceRequests.Insert(request);
+            // Add to priority queue if it's a priority service request
+            if (request.Priority > 0) 
+            { 
+                priorityQueue.Insert(request); 
+            }
             SaveRequests();
         }
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -56,7 +61,16 @@ namespace MunicipalityApp.Classes
             return serviceRequests.InOrderTraversal();
         }
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Retrieves the next highest priority service request
+        /// </summary>
+        /// <returns></returns>
+        public ServiceRequest GetNextPriorityRequest()
+        {
+            return priorityQueue.ExtractMax();
+        }
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// Saves the service requests to a file
         /// </summary>
@@ -74,13 +88,19 @@ namespace MunicipalityApp.Classes
         /// </summary>
         private void LoadRequests()
         {
-            if (File.Exists("serviceRequests.json"))
+           if (File.Exists("serviceRequests.json"))
             {
                 var json = File.ReadAllText("serviceRequests.json");
                 var requests = JsonSerializer.Deserialize<ServiceRequest[]>(json);
                 foreach (var request in requests)
                 {
                     serviceRequests.Insert(request);
+
+                    // Add to priority queue if it's a priority service request
+                    if (request.Priority > 0)
+                    {
+                        priorityQueue.Insert(request);
+                    }
                 }
             }
         }

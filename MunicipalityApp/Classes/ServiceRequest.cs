@@ -15,7 +15,9 @@ namespace MunicipalityApp.Classes
         public string UserEmail { get; set; }
         public string PhoneNumber { get; set; }
 
-        public ServiceRequest(int id, string status, string serviceType, string userName, string userEmail, string phoneNumber)
+        public int Priority { get; set; }
+
+        public ServiceRequest(int id, string status, string serviceType, string userName, string userEmail, string phoneNumber, int priority)
         {
             Id = id;
             Status = status;
@@ -23,12 +25,13 @@ namespace MunicipalityApp.Classes
             UserName = userName;
             UserEmail = userEmail;
             PhoneNumber = phoneNumber;
+            Priority = priority;
         }
 
         public int CompareTo(ServiceRequest other)
         {
             if (other == null) return 1;
-            return this.Id.CompareTo(other.Id);
+            return this.Priority.CompareTo(other.Priority); // Compare by priority
         }
 
         /// <summary>
@@ -37,8 +40,7 @@ namespace MunicipalityApp.Classes
         /// <returns></returns>
         public override string ToString()
         {
-            return $"ID: {Id}, ServiceType: {ServiceType}, Status: {Status}, User: {UserName}, Email: {UserEmail}, Phone: {PhoneNumber}";
-
+            return $"ID: {Id}, ServiceType: {ServiceType}, Status: {Status}, User: {UserName}, Email: {UserEmail}, Phone: {PhoneNumber}, Priority: {Priority}";
         }
     }
 }

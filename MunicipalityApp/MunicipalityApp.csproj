@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FormController.cs" />
+    <Compile Include="Classes\MaxHeap.cs" />
     <Compile Include="Classes\Part 1\IssueClass.cs" />
     <Compile Include="Classes\Part 1\IssueManager.cs" />
     <Compile Include="Classes\Part 2\AnnouncementClass.cs" />
