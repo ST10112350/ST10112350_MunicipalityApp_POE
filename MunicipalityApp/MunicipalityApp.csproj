@@ -78,8 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FormController.cs" />
-    <Compile Include="Classes\IssueClass.cs" />
-    <Compile Include="Classes\IssueManager.cs" />
+    <Compile Include="Classes\Part 1\IssueClass.cs" />
+    <Compile Include="Classes\Part 1\IssueManager.cs" />
     <Compile Include="Classes\Part 2\AnnouncementClass.cs" />
     <Compile Include="Classes\Part 2\AnnouncementManager.cs" />
     <Compile Include="Classes\Part 2\EventClass.cs" />
