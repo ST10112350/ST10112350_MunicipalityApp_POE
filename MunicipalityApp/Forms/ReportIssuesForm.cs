@@ -246,10 +246,10 @@ namespace MunicipalityApp
 
         private void issues_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedCategory = issues_listbox.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedCategory))
+            var selectedLocation = issues_listbox.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedLocation))
             {
-                var selectedIssue = issueList.Find(issue => issue.Category == selectedCategory);
+                var selectedIssue = issueList.Find(issue => issue.Location == selectedLocation);
                 if (selectedIssue != null)
                 {
                     DisplayIssueDetails(selectedIssue);
