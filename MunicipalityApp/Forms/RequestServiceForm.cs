@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MunicipalityApp.Classes;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MunicipalityApp.Forms;
 
 namespace MunicipalityApp.Forms
 {
@@ -27,6 +28,11 @@ namespace MunicipalityApp.Forms
             InitializeComponent();
             serviceRequestManager = manager;
             PopulateServiceTypeDropdown();
+
+            // Adds menu strip from base form
+            BaseForm menuStripControl = new BaseForm();
+            menuStripControl.Dock = DockStyle.Top;
+            this.Controls.Add(menuStripControl);
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MunicipalityApp.Forms;
 
 namespace MunicipalityApp
 {
@@ -17,6 +18,10 @@ namespace MunicipalityApp
         public Home()
         {
             InitializeComponent();
+            // Adds menu strip from base form
+            BaseForm menuStripControl = new BaseForm();
+            menuStripControl.Dock = DockStyle.Top;
+            this.Controls.Add(menuStripControl);
         }
 
 
@@ -45,6 +50,11 @@ namespace MunicipalityApp
         private void events_menu_Click(object sender, EventArgs e)
         {
             formController.ShowEventsForm();    // Method in FormController to show messages
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

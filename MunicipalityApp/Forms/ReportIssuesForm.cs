@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MunicipalityApp.Classes;
+using MunicipalityApp.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MunicipalityApp.Forms;
 
 namespace MunicipalityApp
 {
@@ -34,6 +36,11 @@ namespace MunicipalityApp
             progressBar1.Maximum = 100;
             LoadAllIssues(); // Load issues when form loads
             formController = new FormController();
+
+            // Adds menu strip from base form
+            BaseForm menuStripControl = new BaseForm();
+            menuStripControl.Dock = DockStyle.Top;
+            this.Controls.Add(menuStripControl);
         }
 
         private void ReportIssuesForm_Load(object sender, EventArgs e)

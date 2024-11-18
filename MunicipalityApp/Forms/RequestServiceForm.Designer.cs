@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestServiceForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,67 +38,30 @@
             this.requestNumber_txtbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.requestStype_dropdown = new System.Windows.Forms.ComboBox();
-            this.menuStrip1.SuspendLayout();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.home_news_menu,
-            this.menu_news_menu,
-            this.toolStripMenuItem3,
-            this.contact_news_menu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(562, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // home_news_menu
-            // 
-            this.home_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_news_menu.Name = "home_news_menu";
-            this.home_news_menu.Size = new System.Drawing.Size(57, 24);
-            this.home_news_menu.Text = "Home";
-            // 
-            // menu_news_menu
-            // 
-            this.menu_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_news_menu.Name = "menu_news_menu";
-            this.menu_news_menu.Size = new System.Drawing.Size(54, 24);
-            this.menu_news_menu.Text = "Menu";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(56, 24);
-            this.toolStripMenuItem3.Text = "About";
-            // 
-            // contact_news_menu
-            // 
-            this.contact_news_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contact_news_menu.Name = "contact_news_menu";
-            this.contact_news_menu.Size = new System.Drawing.Size(85, 24);
-            this.contact_news_menu.Text = "Contact Us";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
-            this.label1.Location = new System.Drawing.Point(28, 55);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(99, 204);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.Size = new System.Drawing.Size(53, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
-            this.label2.Location = new System.Drawing.Point(28, 116);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(99, 265);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
+            this.label2.Size = new System.Drawing.Size(45, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Email";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -111,18 +69,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
-            this.label3.Location = new System.Drawing.Point(24, 188);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(95, 337);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 17);
+            this.label3.Size = new System.Drawing.Size(112, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Phone Number:";
             // 
             // requestSubmit_btn
             // 
-            this.requestSubmit_btn.Location = new System.Drawing.Point(270, 388);
+            this.requestSubmit_btn.Location = new System.Drawing.Point(86, 568);
             this.requestSubmit_btn.Name = "requestSubmit_btn";
-            this.requestSubmit_btn.Size = new System.Drawing.Size(75, 23);
+            this.requestSubmit_btn.Size = new System.Drawing.Size(110, 44);
             this.requestSubmit_btn.TabIndex = 7;
             this.requestSubmit_btn.Text = "Submit!";
             this.requestSubmit_btn.UseVisualStyleBackColor = true;
@@ -130,7 +90,7 @@
             // 
             // requestName_txtbox
             // 
-            this.requestName_txtbox.Location = new System.Drawing.Point(124, 55);
+            this.requestName_txtbox.Location = new System.Drawing.Point(230, 205);
             this.requestName_txtbox.Name = "requestName_txtbox";
             this.requestName_txtbox.Size = new System.Drawing.Size(121, 20);
             this.requestName_txtbox.TabIndex = 9;
@@ -138,7 +98,7 @@
             // 
             // requestEmail_txtbox
             // 
-            this.requestEmail_txtbox.Location = new System.Drawing.Point(124, 119);
+            this.requestEmail_txtbox.Location = new System.Drawing.Point(230, 265);
             this.requestEmail_txtbox.Name = "requestEmail_txtbox";
             this.requestEmail_txtbox.Size = new System.Drawing.Size(121, 20);
             this.requestEmail_txtbox.TabIndex = 10;
@@ -146,7 +106,7 @@
             // 
             // requestNumber_txtbox
             // 
-            this.requestNumber_txtbox.Location = new System.Drawing.Point(159, 188);
+            this.requestNumber_txtbox.Location = new System.Drawing.Point(230, 337);
             this.requestNumber_txtbox.Name = "requestNumber_txtbox";
             this.requestNumber_txtbox.Size = new System.Drawing.Size(121, 20);
             this.requestNumber_txtbox.TabIndex = 11;
@@ -155,28 +115,44 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F);
-            this.label4.Location = new System.Drawing.Point(24, 274);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(95, 423);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 17);
+            this.label4.Size = new System.Drawing.Size(110, 18);
             this.label4.TabIndex = 12;
             this.label4.Text = "Type of Service:";
             // 
             // requestStype_dropdown
             // 
             this.requestStype_dropdown.FormattingEnabled = true;
-            this.requestStype_dropdown.Location = new System.Drawing.Point(159, 274);
+            this.requestStype_dropdown.Location = new System.Drawing.Point(230, 423);
             this.requestStype_dropdown.Name = "requestStype_dropdown";
             this.requestStype_dropdown.Size = new System.Drawing.Size(121, 21);
             this.requestStype_dropdown.TabIndex = 13;
             this.requestStype_dropdown.Text = "Service";
             this.requestStype_dropdown.SelectedIndexChanged += new System.EventHandler(this.requestStype_dropdown_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(46, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(390, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "To request a Service, please fill in the following:";
+            // 
             // RequestServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(562, 755);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.requestStype_dropdown);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.requestNumber_txtbox);
@@ -186,24 +162,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RequestServiceForm";
             this.Text = "RequestServiceForm";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem home_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem contact_news_menu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -213,5 +180,6 @@
         private System.Windows.Forms.TextBox requestNumber_txtbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox requestStype_dropdown;
+        private System.Windows.Forms.Label label5;
     }
 }

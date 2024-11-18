@@ -23,26 +23,30 @@ namespace MunicipalityApp.Forms
         }
         private void InitializeMenuStrip()
         {
-            // Create and configure menu items
+            // Attaching the event handlers
             ToolStripMenuItem menuHome = new ToolStripMenuItem("Home");
-            menuHome.Click += menu_home_Click; // Attach the event handler
+            menuHome.Click += menu_home_Click; // 
 
             ToolStripMenuItem menuMenuForm = new ToolStripMenuItem("Menu");
-            menuMenuForm.Click += menu_menuForm_Click; // Attach the event handler
+            menuMenuForm.Click += menu_menuForm_Click; 
 
             ToolStripMenuItem menuNews = new ToolStripMenuItem("News");
-            menuNews.Click += menu_news_Click; // Attach the event handler
+            menuNews.Click += menu_news_Click; 
 
             ToolStripMenuItem menuContact = new ToolStripMenuItem("Contact");
-            menuContact.Click += menu_contact_Click; // Attach the event handler
+            menuContact.Click += menu_contact_Click; 
 
             ToolStripMenuItem menuAbout = new ToolStripMenuItem("About");
-            menuAbout.Click += menu_about_Click; // Attach the event handler
+            menuAbout.Click += menu_about_Click; 
 
           
         }
 
-
+        /// <summary>
+        /// Form controller navigation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menu_home_Click(object sender, EventArgs e)
         {
             formController.ShowHomeForm();
@@ -69,3 +73,4 @@ namespace MunicipalityApp.Forms
         }
     }
 }
+//------------------------------------------------------------------------[END]--------------------------------------------------------------------------------------------------------------------------------------//

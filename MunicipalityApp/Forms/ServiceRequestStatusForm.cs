@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MunicipalityApp.Classes;
 using MunicipalityApp.Trees;
+using MunicipalityApp.Forms;
+
 
 namespace MunicipalityApp.Forms
 {
@@ -26,6 +28,11 @@ namespace MunicipalityApp.Forms
             formController = new FormController();
             PopulateServiceTypeDropdown();
             displayedServiceRequests = new Dictionary<string, ServiceRequest>();
+
+            // Adds menu strip from base form
+            BaseForm menuStripControl = new BaseForm();
+            menuStripControl.Dock = DockStyle.Top;
+            this.Controls.Add(menuStripControl);
         }
 
         /// <summary>
