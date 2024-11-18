@@ -20,7 +20,7 @@ namespace MunicipalityApp
             InitializeComponent();
             // Adds menu strip from base form
             BaseForm menuStripControl = new BaseForm();
-            menuStripControl.Dock = DockStyle.Top;
+            //menuStripControl.Dock = DockStyle.Top;
             this.Controls.Add(menuStripControl);
         }
 

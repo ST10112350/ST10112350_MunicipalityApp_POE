@@ -71,6 +71,11 @@ namespace MunicipalityApp.Forms
         {
             formController.ShowContactAboutForm();
         }
+
+        private void BaseForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 //------------------------------------------------------------------------[END]--------------------------------------------------------------------------------------------------------------------------------------//

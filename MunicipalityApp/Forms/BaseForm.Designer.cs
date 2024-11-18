@@ -39,12 +39,15 @@
             // 
             // menuStripAll
             // 
+            this.menuStripAll.BackColor = System.Drawing.Color.Transparent;
+            this.menuStripAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStripAll.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_home,
             this.menu_menuForm,
             this.menu_news,
             this.menu_contact,
             this.menu_about});
+            this.menuStripAll.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStripAll.Location = new System.Drawing.Point(0, 0);
             this.menuStripAll.Name = "menuStripAll";
             this.menuStripAll.Size = new System.Drawing.Size(800, 28);
@@ -94,10 +97,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStripAll);
             this.Name = "BaseForm";
-            this.Text = "BaseForm";
+            this.Size = new System.Drawing.Size(800, 450);
+            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.menuStripAll.ResumeLayout(false);
             this.menuStripAll.PerformLayout();
             this.ResumeLayout(false);

@@ -1,6 +1,6 @@
-﻿namespace MunicipalityApp
+﻿namespace MunicipalityApp.Forms
 {
-    partial class Home
+    partial class ContactAboutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactAboutForm));
             this.SuspendLayout();
             // 
-            // Home
+            // ContactAboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Home";
-            this.Text = "StartForm";
-            this.Load += new System.EventHandler(this.Home_Load);
+            this.Name = "ContactAboutForm";
+            this.Text = "ContactAboutForm";
+            this.Load += new System.EventHandler(this.ContactAboutForm_Load);
             this.ResumeLayout(false);
 
         }

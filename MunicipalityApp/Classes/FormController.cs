@@ -117,7 +117,8 @@ namespace MunicipalityApp.Classes
 
         public void ShowContactAboutForm()
         {
-            
+            ContactAboutForm contactForm = new ContactAboutForm();
+            contactForm.Show();
         }
     }
 }
