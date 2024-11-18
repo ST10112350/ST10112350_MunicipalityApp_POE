@@ -42,7 +42,6 @@
             this.attach_btn = new System.Windows.Forms.Button();
             this.no_btn = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.requestService_btn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.home_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_news_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +54,6 @@
             this.reportNumber_lbl = new System.Windows.Forms.Label();
             this.reportEmail_lbl = new System.Windows.Forms.Label();
             this.reportName_lbl = new System.Windows.Forms.Label();
-            this.reportServiceType_lbl = new System.Windows.Forms.Label();
-            this.serviceType_dropdown = new System.Windows.Forms.ComboBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -192,16 +189,6 @@
             this.no_btn.Text = "No";
             this.no_btn.UseVisualStyleBackColor = true;
             // 
-            // requestService_btn
-            // 
-            this.requestService_btn.Location = new System.Drawing.Point(613, 47);
-            this.requestService_btn.Name = "requestService_btn";
-            this.requestService_btn.Size = new System.Drawing.Size(232, 35);
-            this.requestService_btn.TabIndex = 12;
-            this.requestService_btn.Text = "Would you like to request a Service?";
-            this.requestService_btn.UseVisualStyleBackColor = true;
-            this.requestService_btn.Click += new System.EventHandler(this.requestService_btn_Click_1);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -253,9 +240,6 @@
             this.panel2.Controls.Add(this.reportNumber_lbl);
             this.panel2.Controls.Add(this.reportEmail_lbl);
             this.panel2.Controls.Add(this.reportName_lbl);
-            this.panel2.Controls.Add(this.reportServiceType_lbl);
-            this.panel2.Controls.Add(this.serviceType_dropdown);
-            this.panel2.Controls.Add(this.requestService_btn);
             this.panel2.Controls.Add(this.issues_lbl);
             this.panel2.Controls.Add(this.location_txtbx);
             this.panel2.Controls.Add(this.no_btn);
@@ -324,25 +308,6 @@
             this.reportName_lbl.TabIndex = 15;
             this.reportName_lbl.Text = "Name:";
             // 
-            // reportServiceType_lbl
-            // 
-            this.reportServiceType_lbl.AutoSize = true;
-            this.reportServiceType_lbl.Location = new System.Drawing.Point(613, 123);
-            this.reportServiceType_lbl.Name = "reportServiceType_lbl";
-            this.reportServiceType_lbl.Size = new System.Drawing.Size(73, 13);
-            this.reportServiceType_lbl.TabIndex = 14;
-            this.reportServiceType_lbl.Text = "Service Type:";
-            // 
-            // serviceType_dropdown
-            // 
-            this.serviceType_dropdown.FormattingEnabled = true;
-            this.serviceType_dropdown.Location = new System.Drawing.Point(637, 159);
-            this.serviceType_dropdown.Name = "serviceType_dropdown";
-            this.serviceType_dropdown.Size = new System.Drawing.Size(208, 21);
-            this.serviceType_dropdown.TabIndex = 13;
-            this.serviceType_dropdown.Visible = false;
-            this.serviceType_dropdown.SelectedIndexChanged += new System.EventHandler(this.serviceType_dropdown_SelectedIndexChanged_1);
-            // 
             // ReportIssuesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,15 +344,12 @@
         private System.Windows.Forms.Button attach_btn;
         private System.Windows.Forms.RadioButton no_btn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button requestService_btn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem home_news_menu;
         private System.Windows.Forms.ToolStripMenuItem menu_news_menu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem contact_news_menu;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox serviceType_dropdown;
-        private System.Windows.Forms.Label reportServiceType_lbl;
         private System.Windows.Forms.TextBox reportNumber_txtbx;
         private System.Windows.Forms.TextBox reportEmail_txtbx;
         private System.Windows.Forms.TextBox reportName_txtbx;

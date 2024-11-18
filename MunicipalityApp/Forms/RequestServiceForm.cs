@@ -16,10 +16,11 @@ namespace MunicipalityApp.Forms
     public partial class RequestServiceForm : Form
     {
         private ServiceRequestManager serviceRequestManager;
-        private string userName = string.Empty;
-        private string userContact = string.Empty;
-        private string phoneNumber = string.Empty;
         private string serviceType = string.Empty;
+        private string userName = string.Empty;
+        private string userEmail = string.Empty;
+        private string phoneNumber = string.Empty;
+        
 
         public RequestServiceForm(ServiceRequestManager manager)
         {
@@ -40,7 +41,7 @@ namespace MunicipalityApp.Forms
 
         private void requestEmail_txtbox_TextChanged(object sender, EventArgs e)
         {
-            userContact = requestEmail_txtbox.Text;
+            userEmail = requestEmail_txtbox.Text;
         }
 
         private void requestNumber_txtbox_TextChanged(object sender, EventArgs e)
@@ -121,10 +122,15 @@ namespace MunicipalityApp.Forms
         {
             if (ValidateFields())
             {
-
-                // Create and add the service request
-                ServiceRequest newRequest = new ServiceRequest(-1, $"Request for {serviceType}", "Pending", userName, userContact, phoneNumber);
-                serviceRequestManager.AddServiceRequest(newRequest);
+              // Create and add the service request
+                serviceRequestManager.AddServiceRequest(new ServiceRequest(
+                    -1, // Placeholder for ID, it will be set in ServiceRequestManager
+                    "Pending",
+                    serviceType,
+                    userName,
+                    userEmail,
+                    phoneNumber
+                ));
 
                 // Success message
                 MessageBox.Show("Service request submitted successfully!");
@@ -135,7 +141,6 @@ namespace MunicipalityApp.Forms
                 requestNumber_txtbox.Clear();
                 requestStype_dropdown.SelectedIndex = -1;
             }
-               
         }
     }
 }

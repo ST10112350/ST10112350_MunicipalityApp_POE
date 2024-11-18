@@ -91,6 +91,11 @@ namespace MunicipalityApp.Trees
                 InOrderRec(root.Right, result);
             }
         }
+
+        internal void Delete(ServiceRequest requestToRemove)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
            

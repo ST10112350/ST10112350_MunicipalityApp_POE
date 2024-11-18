@@ -29,8 +29,8 @@ namespace MunicipalityApp
         {
             InitializeComponent();
             issueManager = manager; // Initialize IssueManager
-            serviceType_dropdown.Visible = false; // Initially hide the dropdown
-            PopulateServiceTypeDropdown();
+            //serviceType_dropdown.Visible = false; // Initially hide the dropdown
+            //PopulateServiceTypeDropdown();
             serviceRequestManager = requestManager;
         }
 
@@ -84,7 +84,7 @@ namespace MunicipalityApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void requestService_btn_Click_1(object sender, EventArgs e)
+       /* private void requestService_btn_Click_1(object sender, EventArgs e)
         {
             serviceType_dropdown.Visible = true; // Show the dropdown when button is clicked
         }
@@ -113,7 +113,7 @@ namespace MunicipalityApp
                 "Water Leak Reporting", "Sewage Issues", "Public Health Inspections", "Animal Control", "Park Maintenance", 
                 "Facility Booking", "Playground Repairs", "Community Safety", "Littering Reporting", "Tree Maintenance" 
             }); 
-        }
+        }*/
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>

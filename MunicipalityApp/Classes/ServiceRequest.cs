@@ -10,26 +10,36 @@ namespace MunicipalityApp.Classes
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        public string UserName { get; set; }
-        public string UserContact { get; set; }
-        public string PhoneNumber { get; set; }
         public string ServiceType { get; set; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public ServiceRequest(int id, string status, string userName, string userContact, string phoneNumber, string serviceType)
+        public ServiceRequest(int id, string status, string serviceType, string userName, string userEmail, string phoneNumber)
         {
             Id = id;
             Status = status;
-            UserName = userName;
-            UserContact = userContact;
-            PhoneNumber = phoneNumber;
             ServiceType = serviceType;
+            UserName = userName;
+            UserEmail = userEmail;
+            PhoneNumber = phoneNumber;
         }
 
         public int CompareTo(ServiceRequest other)
-        { 
-            // Compare by ID
+        {
             if (other == null) return 1;
-            return this.Id.CompareTo(other.Id); 
+            return this.Id.CompareTo(other.Id);
         }
+
+        /// <summary>
+        /// Override the ToString method to display more than 1 service request details
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"ID: {Id}, ServiceType: {ServiceType}, Status: {Status}, User: {UserName}, Email: {UserEmail}, Phone: {PhoneNumber}";
+
         }
+    }
 }
+//------------------------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------------------------------------//

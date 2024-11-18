@@ -14,7 +14,9 @@ namespace MunicipalityApp.Classes
         private ServiceRequestManager serviceRequestManager = new ServiceRequestManager();
         private SortedDictionary<DateTime, List<AnnouncementClass>> announcements = new SortedDictionary<DateTime, List<AnnouncementClass>>();
 
-        // Show the Report Issues Form
+        /// <summary>
+        /// Show the Report Issues Form
+        /// </summary>
         public void ShowReportIssuesForm()
         {
 
@@ -23,25 +25,44 @@ namespace MunicipalityApp.Classes
             //currentForm.hide();
         }
 
-        // Show the Events and Announcements Form
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Show the Events and Announcements Form
+        /// </summary>
         public void ShowEventsForm()
         {
             EventsAnnouncementsForm eventsForm = new EventsAnnouncementsForm();
             eventsForm.Show();
         }
-        // Show the Menu Form menu strip 
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Show the Menu Form menu strip 
+        /// </summary>
         public void ShowMenuForm()
         {
             MenuForm1 menuForm = new MenuForm1();
             menuForm.Show();
         }
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Show the Service Request Status Form
+        /// </summary>
         public void showStatusForm()
         {
             ServiceRequestStatusForm statusForm = new ServiceRequestStatusForm(serviceRequestManager);
             statusForm.Show();
         }
-        
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Show the Request Service Form
+        /// </summary>
         public void showRequestForm()
         {
             RequestServiceForm requestForm = new RequestServiceForm(serviceRequestManager);
@@ -51,4 +72,4 @@ namespace MunicipalityApp.Classes
     }
 }
 
-//-------------------------------------------------------END----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------------------------------------//

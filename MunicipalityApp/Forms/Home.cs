@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace MunicipalityApp
 {
-    public partial class StartForm : Form
+    public partial class Home : Form
     {
         private FormController formController;
-        public StartForm()
+        public Home()
         {
             InitializeComponent();
         }
