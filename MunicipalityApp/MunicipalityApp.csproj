@@ -77,11 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AnnouncementClass.cs" />
-    <Compile Include="Classes\EventClass.cs" />
     <Compile Include="Classes\FormController.cs" />
     <Compile Include="Classes\IssueClass.cs" />
     <Compile Include="Classes\IssueManager.cs" />
+    <Compile Include="Classes\Part 2\AnnouncementClass.cs" />
+    <Compile Include="Classes\Part 2\AnnouncementManager.cs" />
+    <Compile Include="Classes\Part 2\EventClass.cs" />
+    <Compile Include="Classes\Part 2\EventManager.cs" />
     <Compile Include="Classes\ServiceRequest.cs" />
     <Compile Include="Classes\ServiceRequestManager.cs" />
     <Compile Include="Forms\EventsAnnouncementsForm.cs">

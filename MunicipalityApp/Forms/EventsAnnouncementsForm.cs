@@ -16,96 +16,21 @@ namespace MunicipalityApp.Forms
 {
     public partial class EventsAnnouncementsForm : Form
     {
-        private Dictionary<string, EventClass> events;
-        private Dictionary<string, AnnouncementClass> announcements;
-        private SortedDictionary<DateTime, List<EventClass>> sortedEvents;
+        private EventManager eventManager;
+        private AnnouncementManager announcementManager;
         private FormController formController;
 
         public EventsAnnouncementsForm()
         {
             InitializeComponent();
-            LoadData();
+            eventManager = new EventManager();
+            announcementManager = new AnnouncementManager();
             PopulateEventComboBox();
             LoadCategories();
             formController = new FormController();
             LoadAnnouncements(); // Load announcements on form initialization
         }
 
-        /// <summary>
-        /// Load events and announcements data
-        /// </summary>
-        private void LoadData()
-        {
-            // Load events data
-            events = new Dictionary<string, EventClass>
-            {
-                {
-                    "Cape Town International Jazz Festival",
-                    new EventClass("Cape Town International Jazz Festival",
-                                   new DateTime(2024, 5, 3),
-                                   "Cape Town International Convention Centre",
-                                   "Music",
-                                   "BackgroundImages/jazzfest_poster.jpg",
-                                   "http://tickets.com/jazzfest")
-                },
-                {
-                    "Cape Town Carnival",
-                    new EventClass("Cape Town Carnival",
-                                   new DateTime(2025, 3, 15),
-                                   "The Fanwalk Greenpoint",
-                                   "Festival",
-                                   "BackgroundImages/carnival_poster.jpg",
-                                   "http://tickets.com/carnival")
-                },
-                {
-                    "Cape Town Cycle Tour",
-                    new EventClass("Cape Town Cycle Tour",
-                                   new DateTime(2025, 3, 9),
-                                   "Various Locations",
-                                   "Sports",
-                                   "BackgroundImages/cycle_poster.jpg",
-                                   "http://tickets.com/cycletour")
-                },
-                {
-                    "Mining Indaba",
-                    new EventClass("Mining Indaba",
-                                   new DateTime(2025, 2, 3),
-                                   "Cape Town International Convention Centre",
-                                   "Conference",
-                                   "BackgroundImages/mi_poster.jpg",
-                                   "http://tickets.com/miningindaba")
-                },
-                {
-                    "DSTV Mitchell's Plain Festival",
-                    new EventClass("DSTV Mitchell's Plain Festival",
-                                   new DateTime(2024, 12, 29),
-                                   "Various Locations",
-                                   "Festival",
-                                   "BackgroundImages/dstv_poster.jpg",
-                                   "http://tickets.com/mitchellsplain")
-                }
-            };
-
-           
-            /// Load announcements data
-            announcements = new Dictionary<string, AnnouncementClass>
-            {
-                { "Loadshedding has been postponed", new AnnouncementClass("Loadshedding has been postponed", DateTime.Now) },
-                { "Potholes in Dunbar Road to be fixed November 5th 2024", new AnnouncementClass("Potholes in Dunbar Road to be fixed November 5th 2024", new DateTime(2024, 11, 5)) },
-                { "New mall opening 2025", new AnnouncementClass("New mall opening 2025", new DateTime(2025, 1, 1)) }
-            };
-
-            // Organize events in a sorted dictionary by date
-            sortedEvents = new SortedDictionary<DateTime, List<EventClass>>();
-            foreach (var eventEntry in events.Values)
-            {
-                if (!sortedEvents.ContainsKey(eventEntry.Date))
-                {
-                    sortedEvents[eventEntry.Date] = new List<EventClass>();
-                }
-                sortedEvents[eventEntry.Date].Add(eventEntry);
-            }
-        }
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         /// <summary>
@@ -114,7 +39,7 @@ namespace MunicipalityApp.Forms
         private void PopulateEventComboBox()
         {
             event_box.Items.Clear();
-            foreach (var eventEntry in events.Keys)
+            foreach (var eventEntry in eventManager.Events.Keys)
             {
                 event_box.Items.Add(eventEntry);
             }
@@ -130,7 +55,7 @@ namespace MunicipalityApp.Forms
             if (event_box.SelectedItem != null)
             {
                 string selectedTitle = event_box.SelectedItem.ToString();
-                if (events.TryGetValue(selectedTitle, out EventClass selectedEvent))
+                if (eventManager.Events.TryGetValue(selectedTitle, out EventClass selectedEvent))
                 {
                     // Create a new panel to display event details
                     Form detailsForm = new Form
@@ -177,7 +102,7 @@ namespace MunicipalityApp.Forms
             string categoryFilter = categoryComboBox.SelectedItem?.ToString();
             DateTime? dateFilter = datePicker.Value.Date;
 
-            var filteredEvents = events.Values.Where(e =>
+            var filteredEvents = eventManager.Events.Values.Where(e =>
                 (string.IsNullOrEmpty(categoryFilter) || e.Category == categoryFilter) &&
                 (!dateFilter.HasValue || e.Date.Date == dateFilter.Value)).ToList();
 
@@ -194,7 +119,7 @@ namespace MunicipalityApp.Forms
         /// </summary>
         private void LoadCategories()
         {
-            var categories = events.Values.Select(e => e.Category).Distinct().ToList(); // Get distinct categories
+            var categories = eventManager.Events.Values.Select(e => e.Category).Distinct().ToList(); // Get distinct categories
             categoryComboBox.DataSource = categories; // Bind to ComboBox
         }
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -207,7 +132,7 @@ namespace MunicipalityApp.Forms
             announcementsListBox.Items.Clear();
 
             // Load announcements into announcementsListBox
-            foreach (var announcement in announcements.Values)
+            foreach (var announcement in announcementManager.Announcements.Values)
             {
                 announcementsListBox.Items.Add(announcement.Message);
             }
@@ -218,7 +143,7 @@ namespace MunicipalityApp.Forms
             if (announcementsListBox.SelectedItem != null)
             {
                 string selectedAnnouncement = announcementsListBox.SelectedItem.ToString();
-                if (announcements.TryGetValue(selectedAnnouncement, out AnnouncementClass selectedAnnounce))
+                if (announcementManager.Announcements.TryGetValue(selectedAnnouncement, out AnnouncementClass selectedAnnounce))
                 {
                     // Display announcement details
                     string message = $"Announcement: {selectedAnnounce.Message}\nDate: {selectedAnnounce.Date.ToShortDateString()}";
@@ -226,6 +151,7 @@ namespace MunicipalityApp.Forms
                 }
             }
         }
+
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -240,7 +166,7 @@ namespace MunicipalityApp.Forms
         private void search_txtbx_TextChanged(object sender, EventArgs e)
         {
             string searchTerm = search_txtbx.Text.ToLower();
-            var filteredEvents = events.Values
+            var filteredEvents = eventManager.Events.Values
                 .Where(ev => ev.Title.ToLower().Contains(searchTerm) ||
                              ev.Category.ToLower().Contains(searchTerm))
                 .ToList();
@@ -267,4 +193,3 @@ namespace MunicipalityApp.Forms
 
     }
 }
-//----------------------------------------------------------------------------------------------[END]-------------------------------------------------------------------------------------------------------------------------------//
