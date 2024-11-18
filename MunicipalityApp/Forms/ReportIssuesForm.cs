@@ -8,92 +8,107 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MunicipalityApp.Classes;
-using MunicipalityApp.Trees;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MunicipalityApp
 {
     public partial class ReportIssuesForm : Form
     {
-        private string attachedFilePath = string.Empty; 
+        private string Name = string.Empty;
+        private string Email = string.Empty;
+        private string Phone = string.Empty;
+        private string dateTime = DateTime.Now.ToString();
+        private string attachedFilePath = string.Empty;
         private string location = string.Empty;
         private string category = string.Empty;
         private string description = string.Empty;
-        private string serviceType = string.Empty;
-        private string userName = string.Empty; 
-        private string userEmail = string.Empty; 
-        private string userPhone = string.Empty;
         private IssueManager issueManager;
 
-        public ReportIssuesForm(IssueManager manager, ServiceRequestManager requestManager)
+        private List<IssueClass> issueList = new List<IssueClass>();
+        public ReportIssuesForm(IssueManager manager)
         {
             InitializeComponent();
             issueManager = manager; // Initialize IssueManager
+            PopulateCategoryComboBox();
+            progressBar1.Maximum = 100;
+            LoadAllIssues(); // Load issues when form loads
         }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void ReportIssuesForm_Load(object sender, EventArgs e)
         {
-
+            // Initialize progress bar and other form settings
+            UpdateProgressBar();
         }
+
+        private void UpdateProgressBar()
+        {
+            int progress = 0;
+            if (!string.IsNullOrWhiteSpace(Name)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(Email)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(Phone)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(location)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(category)) progress += 15;
+            if (!string.IsNullOrWhiteSpace(description)) progress += 15;
+            if (!string.IsNullOrEmpty(attachedFilePath)) progress += 10;
+            if (!string.IsNullOrEmpty(dateTime)) progress += 10;
+
+            progressBar1.Value = progress;
+        }
+
         /// <summary>
         /// User input for the report
         /// </summary>
 
         private void reportName_txtbx_TextChanged(object sender, EventArgs e)
         {
-            userName = reportName_txtbx.Text;
+            Name = reportName_txtbx.Text;
+            UpdateProgressBar();
         }
 
         private void reportEmail_txtbx_TextChanged(object sender, EventArgs e)
         {
-            userEmail = reportEmail_txtbx.Text;
+            Email = reportEmail_txtbx.Text;
+            UpdateProgressBar();
         }
 
         private void reportNumber_txtbx_TextChanged(object sender, EventArgs e)
         {
-            userPhone = reportNumber_txtbx.Text;
+            Phone = reportNumber_txtbx.Text;
+            UpdateProgressBar();
+        }
+        private void issue_date_ValueChanged_1(object sender, EventArgs e)
+        {
+            dateTime = issue_date.Value.ToString();
+            UpdateProgressBar();
         }
 
         private void location_txtbx_TextChanged(object sender, EventArgs e)
         {
-            location = location_txtbx.Text; 
+            location = location_txtbx.Text;
+            UpdateProgressBar();
         }
 
-        private void category_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void PopulateCategoryComboBox()
         {
-            category = category_listBox.SelectedItem?.ToString(); 
+            category_comboBox.Items.AddRange(new string[]
+            {
+                "Sanitation ", " Roads ", "Utilities "
+            });
         }
 
         private void discription_txtbx_TextChanged(object sender, EventArgs e)
         {
-            description = discription_txtbx.Text; 
+            description = discription_txtbx.Text;
+            UpdateProgressBar();
         }
 
-    
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// Submit the issue
         /// </summary>
-    
-        private void submit_btn_Click(object sender, EventArgs e)
-        {
-            // Create a new IssueClass instance with collected data
-            IssueClass newIssue = new IssueClass(location, category, description, GetAttachedFilePath());
 
-            // Add the issue 
-            issueManager.AddIssue(newIssue);
 
-            // success message and reset the form
-            MessageBox.Show("Issue reported successfully!");
-
-            //Reset the form fields
-            ResetForm();
-        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -106,27 +121,21 @@ namespace MunicipalityApp
             bool isValid = true;
             string errorMessage = "";
 
-            if (string.IsNullOrWhiteSpace(userName))
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 errorMessage += "Name is required.\n";
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(userEmail) || !System.Text.RegularExpressions.Regex.IsMatch(userEmail, emailPattern))
+            if (string.IsNullOrWhiteSpace(Email) || !System.Text.RegularExpressions.Regex.IsMatch(Email, emailPattern))
             {
                 errorMessage += "A valid email is required.\n";
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(userPhone) || userPhone.Length != 10)
+            if (string.IsNullOrWhiteSpace(Phone) || Phone.Length != 10)
             {
                 errorMessage += "Phone number must be 10 digits.\n";
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(serviceType))
-            {
-                errorMessage += "Please select a service type.\n";
                 isValid = false;
             }
 
@@ -153,16 +162,25 @@ namespace MunicipalityApp
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true; // Restores the last selected directory
 
-                
+
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                   
+
                     attachedFilePath = openFileDialog.FileName;
-                   
+                    UpdateFilePreview();
                 }
             }
         }
-       
+
+        private void UpdateFilePreview()
+        {
+            attachedFiles_listBox.Items.Clear();
+            attachedFiles_listBox.Items.Add(attachedFilePath);
+            UpdateProgressBar();
+        }
+
+
+
         public string GetAttachedFilePath()
         {
             return attachedFilePath;
@@ -170,17 +188,91 @@ namespace MunicipalityApp
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void ResetForm()
+
+        private void progressBar1_Click(object sender, EventArgs e)
         {
-            location_txtbx.Clear();
-            category_listBox.ClearSelected();
-            discription_txtbx.Clear();
-            attachedFilePath = string.Empty;
-            //lblSelectedFile.Text = string.Empty; // Assuming you have a label named lblSelectedFile
+            UpdateProgressBar();
+        }
+
+        private void category_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            category = category_comboBox.SelectedItem?.ToString();
+        }
+        private void submit_btn_Click(object sender, EventArgs e)
+        {
+            if (ValidateFields())
+            {
+                // Create a new IssueClass instance with collected data
+                IssueClass newIssue = new IssueClass(Name, Email, Phone, dateTime, location, category, description, GetAttachedFilePath());
+
+                // Add the issue
+                issueManager.AddIssue(newIssue);
+
+                // Success message and reset the form
+                MessageBox.Show("Issue reported successfully!");
+
+                // Reset the form fields
+                ResetForm();
+            }
+        }
+
+        private void LoadAllIssues()
+        {
+            issueList = issueManager.GetIssues(); // Get all issues from IssueManager
+            issues_listbox.Items.Clear();
+
+            foreach (var issue in issueList)
+            {
+                issues_listbox.Items.Add(issue.Location); // Display location in the list box
+            }
+        }
+        private void issues_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedLocation = issues_listbox.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedLocation))
+            {
+                var selectedIssue = issueList.Find(issue => issue.Location == selectedLocation);
+                if (selectedIssue != null)
+                {
+                    DisplayIssueDetails(selectedIssue);
+                }
+            }
+        }
+
+        private void DisplayIssueDetails(IssueClass issue)
+        {
+            // Display the details in a MessageBox
+            MessageBox.Show(
+                $"Name: {issue.Name}\n" +
+                $"Email: {issue.Email}\n" +
+                $"Phone: {issue.Phone}\n" +
+                $"DateTime: {issue.DateTime}\n" +
+                $"Location: {issue.Location}\n" +
+                $"Category: {issue.Category}\n" +
+                $"Description: {issue.Description}\n" +
+                $"Attached File: {issue.AttachedFile}",
+                "Issue Details",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
         }
 
 
-       
+        private void ResetForm()
+        {
+            reportName_txtbx.Text = "";
+            reportEmail_txtbx.Text = "";
+            reportNumber_txtbx.Text = "";
+            location_txtbx.Text = "";
+            discription_txtbx.Text = "";
+            attachedFiles_listBox.Items.Clear();
+            issue_date.Value = DateTime.Now;
+            category_comboBox.SelectedIndex = -1;
+            attachedFilePath = "";
+            UpdateProgressBar();
+        }
     }
 }
+
 //-----------------------------------------------------------------------------------------[END]----------------------------------------------------------------------------//

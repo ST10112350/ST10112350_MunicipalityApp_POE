@@ -84,7 +84,6 @@
     <Compile Include="Classes\IssueManager.cs" />
     <Compile Include="Classes\ServiceRequest.cs" />
     <Compile Include="Classes\ServiceRequestManager.cs" />
-    <Compile Include="Classes\SubmissionProgress.cs" />
     <Compile Include="Forms\EventsAnnouncementsForm.cs">
       <SubType>Form</SubType>
     </Compile>

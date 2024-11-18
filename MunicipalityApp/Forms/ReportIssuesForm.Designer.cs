@@ -38,7 +38,6 @@
             this.location_lbl = new System.Windows.Forms.Label();
             this.description_lbl = new System.Windows.Forms.Label();
             this.category_lbl = new System.Windows.Forms.Label();
-            this.category_listBox = new System.Windows.Forms.ListBox();
             this.attach_btn = new System.Windows.Forms.Button();
             this.no_btn = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -48,6 +47,10 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contact_news_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.category_comboBox = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.date_lbl = new System.Windows.Forms.Label();
+            this.issue_date = new System.Windows.Forms.DateTimePicker();
             this.reportNumber_txtbx = new System.Windows.Forms.TextBox();
             this.reportEmail_txtbx = new System.Windows.Forms.TextBox();
             this.reportName_txtbx = new System.Windows.Forms.TextBox();
@@ -55,8 +58,13 @@
             this.reportEmail_lbl = new System.Windows.Forms.Label();
             this.reportName_lbl = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.issues_listbox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.attachedFiles_listBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // issues_lbl
@@ -101,14 +109,13 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // attach_lbl
             // 
             this.attach_lbl.AutoSize = true;
             this.attach_lbl.BackColor = System.Drawing.Color.Transparent;
             this.attach_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attach_lbl.Location = new System.Drawing.Point(52, 465);
+            this.attach_lbl.Location = new System.Drawing.Point(52, 374);
             this.attach_lbl.Name = "attach_lbl";
             this.attach_lbl.Size = new System.Drawing.Size(203, 20);
             this.attach_lbl.TabIndex = 5;
@@ -147,29 +154,10 @@
             this.category_lbl.TabIndex = 8;
             this.category_lbl.Text = "Select a category:";
             // 
-            // category_listBox
-            // 
-            this.category_listBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.category_listBox.AllowDrop = true;
-            this.category_listBox.BackColor = System.Drawing.Color.MintCream;
-            this.category_listBox.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.category_listBox.FormattingEnabled = true;
-            this.category_listBox.ItemHeight = 20;
-            this.category_listBox.Items.AddRange(new object[] {
-            "Sanitation",
-            "Roads",
-            "Utilities"});
-            this.category_listBox.Location = new System.Drawing.Point(221, 308);
-            this.category_listBox.Name = "category_listBox";
-            this.category_listBox.ScrollAlwaysVisible = true;
-            this.category_listBox.Size = new System.Drawing.Size(120, 84);
-            this.category_listBox.TabIndex = 9;
-            this.category_listBox.SelectedIndexChanged += new System.EventHandler(this.category_listBox_SelectedIndexChanged);
-            // 
             // attach_btn
             // 
             this.attach_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attach_btn.Location = new System.Drawing.Point(52, 488);
+            this.attach_btn.Location = new System.Drawing.Point(52, 397);
             this.attach_btn.Name = "attach_btn";
             this.attach_btn.Size = new System.Drawing.Size(111, 36);
             this.attach_btn.TabIndex = 10;
@@ -181,7 +169,7 @@
             // 
             this.no_btn.AutoSize = true;
             this.no_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.no_btn.Location = new System.Drawing.Point(207, 494);
+            this.no_btn.Location = new System.Drawing.Point(207, 403);
             this.no_btn.Name = "no_btn";
             this.no_btn.Size = new System.Drawing.Size(48, 24);
             this.no_btn.TabIndex = 11;
@@ -234,6 +222,11 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.attachedFiles_listBox);
+            this.panel2.Controls.Add(this.category_comboBox);
+            this.panel2.Controls.Add(this.progressBar1);
+            this.panel2.Controls.Add(this.date_lbl);
+            this.panel2.Controls.Add(this.issue_date);
             this.panel2.Controls.Add(this.reportNumber_txtbx);
             this.panel2.Controls.Add(this.reportEmail_txtbx);
             this.panel2.Controls.Add(this.reportName_txtbx);
@@ -250,11 +243,45 @@
             this.panel2.Controls.Add(this.description_lbl);
             this.panel2.Controls.Add(this.submit_btn);
             this.panel2.Controls.Add(this.category_lbl);
-            this.panel2.Controls.Add(this.category_listBox);
-            this.panel2.Location = new System.Drawing.Point(54, 52);
+            this.panel2.Location = new System.Drawing.Point(347, 47);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(899, 591);
+            this.panel2.Size = new System.Drawing.Size(722, 591);
             this.panel2.TabIndex = 16;
+            // 
+            // category_comboBox
+            // 
+            this.category_comboBox.FormattingEnabled = true;
+            this.category_comboBox.Location = new System.Drawing.Point(221, 310);
+            this.category_comboBox.Name = "category_comboBox";
+            this.category_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.category_comboBox.TabIndex = 24;
+            this.category_comboBox.Text = "Category";
+            this.category_comboBox.SelectedIndexChanged += new System.EventHandler(this.category_comboBox_SelectedIndexChanged);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(467, 478);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 23;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // date_lbl
+            // 
+            this.date_lbl.AutoSize = true;
+            this.date_lbl.Location = new System.Drawing.Point(40, 182);
+            this.date_lbl.Name = "date_lbl";
+            this.date_lbl.Size = new System.Drawing.Size(33, 13);
+            this.date_lbl.TabIndex = 22;
+            this.date_lbl.Text = "Date:";
+            // 
+            // issue_date
+            // 
+            this.issue_date.Location = new System.Drawing.Point(221, 176);
+            this.issue_date.Name = "issue_date";
+            this.issue_date.Size = new System.Drawing.Size(200, 20);
+            this.issue_date.TabIndex = 21;
+            this.issue_date.ValueChanged += new System.EventHandler(this.issue_date_ValueChanged_1);
             // 
             // reportNumber_txtbx
             // 
@@ -308,6 +335,41 @@
             this.reportName_lbl.TabIndex = 15;
             this.reportName_lbl.Text = "Name:";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.issues_listbox);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(8, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(254, 591);
+            this.panel1.TabIndex = 17;
+            // 
+            // issues_listbox
+            // 
+            this.issues_listbox.FormattingEnabled = true;
+            this.issues_listbox.Location = new System.Drawing.Point(38, 109);
+            this.issues_listbox.Name = "issues_listbox";
+            this.issues_listbox.Size = new System.Drawing.Size(153, 212);
+            this.issues_listbox.TabIndex = 1;
+            this.issues_listbox.SelectedIndexChanged += new System.EventHandler(this.issues_listbox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // attachedFiles_listBox
+            // 
+            this.attachedFiles_listBox.FormattingEnabled = true;
+            this.attachedFiles_listBox.Location = new System.Drawing.Point(62, 452);
+            this.attachedFiles_listBox.Name = "attachedFiles_listBox";
+            this.attachedFiles_listBox.Size = new System.Drawing.Size(120, 95);
+            this.attachedFiles_listBox.TabIndex = 25;
+            // 
             // ReportIssuesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +377,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1081, 668);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ReportIssuesForm";
@@ -324,6 +387,8 @@
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,7 +405,6 @@
         private System.Windows.Forms.Label location_lbl;
         private System.Windows.Forms.Label description_lbl;
         private System.Windows.Forms.Label category_lbl;
-        private System.Windows.Forms.ListBox category_listBox;
         private System.Windows.Forms.Button attach_btn;
         private System.Windows.Forms.RadioButton no_btn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -357,5 +421,13 @@
         private System.Windows.Forms.Label reportEmail_lbl;
         private System.Windows.Forms.Label reportName_lbl;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Label date_lbl;
+        private System.Windows.Forms.DateTimePicker issue_date;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ComboBox category_comboBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListBox issues_listbox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox attachedFiles_listBox;
     }
 }

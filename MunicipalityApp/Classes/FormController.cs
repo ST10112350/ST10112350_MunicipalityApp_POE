@@ -20,7 +20,7 @@ namespace MunicipalityApp.Classes
         public void ShowReportIssuesForm()
         {
 
-            ReportIssuesForm reportForm = new ReportIssuesForm(issueManager, serviceRequestManager);
+            ReportIssuesForm reportForm = new ReportIssuesForm(issueManager);
             reportForm.Show();
             //currentForm.hide();
         }
